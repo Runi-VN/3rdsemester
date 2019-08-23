@@ -2,9 +2,6 @@
 
 This is a repository for my weekly tasks, to use with Peergrade.io.
 
-## Weekly tasks
-
-Please see the [wiki](https://github.com/Runi-VN/3rdsemester/wiki/) for details.
-
-## Folder formatting
-For reviews, please choose the week above, everything should be in its right place. See the wiki for my notes.
+## I'm here to review! What now?
+For reviews, please choose the folder for the current week above. Everything should be in its right place.
+For clarification and answer to the weekly questions, please see the [wiki](https://github.com/Runi-VN/3rdsemester/wiki/).
