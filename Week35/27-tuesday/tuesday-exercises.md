@@ -1,14 +1,14 @@
 # Fundamental Network Topics
 [Exercise link](https://docs.google.com/document/d/1RbYJ9hyiqSSASZfuWQtsKwFv7ngQP1-4dceRrKy1LzA/edit)
 
--   What is your public IP address right now, and how did you find it?
-With the use of the Command Prompt and the command **ipconfig** I got the following results:
-School: 10.50.138.198
-Home: 
+-   What is your public IP address right now, and how did you find it?  
+With the use of the Command Prompt and the command **ipconfig** I got the following results:  
+School: 10.50.138.198  
+Home:  
     
--   What is your private IP address right now (do this both at home and in school), and who/what gave you that address?
-With the use of the Command Prompt and the command **ipconfig** I got the following results:
-School: 192.168.56.1
+-   What is your private IP address right now (do this both at home and in school), and who/what gave you that address?  
+With the use of the Command Prompt and the command **ipconfig** I got the following results:  
+School: 192.168.56.1  
 Home: 
 -   What’s special about these address ranges?
     
