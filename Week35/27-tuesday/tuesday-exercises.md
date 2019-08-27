@@ -4,7 +4,7 @@
 -   What is your public IP address right now, and how did you find it?  
 
 Using the website http://ip4.me/ I got the following results:  
-School: 5.179.80.204
+School: 5.179.80.204  
 Home:  
     
 -   What is your private IP address right now (do this both at home and in school), and who/what gave you that address?  
@@ -66,16 +66,25 @@ Approximate round trip times in milli-seconds:
  ```
 
 -   If you write https://studypoints.dk in your browser, how did “it” figure out that it should go to the IP address you discovered above?
+
+Thanks to the DNS server. **elaborate**
     
 -   Explain shortly the purpose of an ip-address and a port-number and why we need both
     
 -   What is your (nearest) DNS server,?
+
+I don't know about my nearest, as I manually use Googles 8.8.8.8/8.8.4.4.  
+Can be found using the CMD command **ipconfig /all**.
     
 -   What is (conceptually) the DNS system and the purpose with a DNS Server?
     
 -   What is your current Gateway, and how did you find it?
+
+I don't know about my *current* gateway, but my default is 10.50.128.1 (school, wifi) & xx.xx.xxx.x (home, ethernet). **elaborate**
     
 -   What is the address of your current DHCP-Server, and how did you find it?
+
+Using **ipconfig /all** it is 10.255.1.10 (school, wifi) and xx.xx.xx.xx (home, ethernet). **elaborate**
     
 -   Explain (conceptually) about the TCP/IP-protocol stack
     
