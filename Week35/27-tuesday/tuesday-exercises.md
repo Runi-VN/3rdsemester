@@ -22,7 +22,14 @@ Private range IPs (**elaborate**)
     
 -   What’s special about this ip-address: 127.0.0.1?
     
--   What kind of service would you expect to find on a server using these ports: 22, 23, 25, 53, 80, 443?
+-   What kind of service would you expect to find on a server using these ports: 22, 23, 25, 53, 80, 443?  
+
+Port 22 is used for the SSH (Secure Shell) Remote Login Protocol.  
+Port 23 is used for the Telnet protocol. 
+Port 25 is used for the SMTP (Simlple Mail Transfer Protocol) Protocol.  
+Port 53 is used for the DNS (Domain Name System) Protocol.  
+Port 80 is used for the HTTP (Hypertext Transfer Protocol) Protocol.  
+Port 443 is used for the HTTPS/SSL (Secure Socket Layer).  
     
 -   What is the IP address of studypoints.dk and how did you find it?
     
