@@ -35,7 +35,35 @@ Port 80 is used for the HTTP (Hypertext Transfer Protocol) Protocol.
 Port 443 is used for the HTTPS/SSL (Secure Socket Layer).  
     
 -   What is the IP address of studypoints.dk and how did you find it?
-    
+
+With the use of the Command Prompt and the command **ping <website\>** I got the following results:  
+`Studypoints.dk`:  
+```C:\Users\runin>ping studypoints.dk
+
+Pinging studypoints.dk [165.227.137.75] with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 165.227.137.75:
+Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)
+```  
+`Studypoints.info`:   
+```C:\Users\runin>ping studypoints.info
+
+Pinging studypoints.info [157.230.21.145] with 32 bytes of data:
+Reply from 157.230.21.145: bytes=32 time=18ms TTL=52
+Reply from 157.230.21.145: bytes=32 time=23ms TTL=52
+Reply from 157.230.21.145: bytes=32 time=17ms TTL=52
+Reply from 157.230.21.145: bytes=32 time=23ms TTL=52
+
+Ping statistics for 157.230.21.145:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 17ms, Maximum = 23ms, Average = 20ms
+ ```
+
 -   If you write https://studypoints.dk in your browser, how did “it” figure out that it should go to the IP address you discovered above?
     
 -   Explain shortly the purpose of an ip-address and a port-number and why we need both
