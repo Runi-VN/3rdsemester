@@ -125,6 +125,16 @@ IP (Internet Layer) doesn't care if a packet gets to its destination or not, it 
 TCP (Transport Layer) is responsible for routing application protocols to the correct application on the destination computer.  
 ([Details](https://medium.com/@anna7/internet-protocol-layers-in-internet-protocol-suite-tcp-ip-abe038c0adde))  
     
--   Explain about the HTTP Protocol (the following exercises will go much deeper into this protocol)
+-   Explain about the HTTP Protocol (the following exercises will go much deeper into this protocol)  
+
+HTTP (Hypertext Transfer Protocol) is a protocol handling communications on the World Wide Web.  
+
+An HTTP request is (typically) done on port 80 for specific resources. We all know the requests POST and GET, but there are several more, such as HEAD, PUT, DELETE, TRACE, OPTIONS, CONNECT.
+
+Following a request is a response, which can be as short as a status code (Was the request followed through) or it can contain headers and body content, such as this website itself, with text, images and hyperlinks.
+
+[Interesting read](http://www.steves-internet-guide.com/http-basics/) including a link to the [original 1-page specification](https://www.w3.org/Protocols/HTTP/AsImplemented.html) for HTTP.
+
+Currently HTTP/2 is standardized as of 2015 with an upcoming third version.
     
 -   Explain (conceptually) how HTTP and TCP/IP are connected (what can HTTP do, and where does it fit into TCP/IP)
