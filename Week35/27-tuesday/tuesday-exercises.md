@@ -5,13 +5,13 @@
 
 Using the website http://ip4.me/ I got the following results:  
 School: 5.179.80.204  
-Home:  
+Home: 87.61.232.155  
     
 -   What is your private IP address right now (do this both at home and in school), and who/what gave you that address?  
 
 With the use of the Command Prompt and the command **ipconfig** I got the following results:  
-School: 192.168.56.1 (Ethernet) & 10.50.138.198 (Wi-Fi) 
-Home: 
+School: 192.168.56.1 (Ethernet) & 10.50.138.198 (Wi-Fi)   
+Home: 192.168.1.83 (Ethernet)
 
 -   What’s special about these address ranges?
     
@@ -80,11 +80,14 @@ Can be found using the CMD command **ipconfig /all**.
     
 -   What is your current Gateway, and how did you find it?
 
-I don't know about my *current* gateway, but my default is 10.50.128.1 (school, wifi) & xx.xx.xxx.x (home, ethernet). **elaborate**
+I don't know about my *current* gateway, but my default is 10.50.128.1 (school, wifi) & 192.168.1.1 (home, ethernet). **elaborate**
     
 -   What is the address of your current DHCP-Server, and how did you find it?
 
-Using **ipconfig /all** it is 10.255.1.10 (school, wifi) and xx.xx.xx.xx (home, ethernet). **elaborate**
+Using **ipconfig /all** it is 10.255.1.10 (school, wifi) 192.168.1.1 (home, ethernet). 
+
+Funnily enough both my DHCP and Gateway are the same (probably due to my really, really simple router):
+![image](https://i.imgur.com/aSpeb2B.png)
     
 -   Explain (conceptually) about the TCP/IP-protocol stack
     
