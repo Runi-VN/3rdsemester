@@ -138,7 +138,7 @@ Following a request is a response, which can be as short as a status code (Was t
 Currently HTTP/2 is standardized as of 2015 with an upcoming third version.
     
 ## Explain (conceptually) how HTTP and TCP/IP are connected (what can HTTP do, and where does it fit into TCP/IP)
-HTTP is in the Applications layer and could contain a response with status/headers/body (webpage). 
+HTTP is in the Applications layer and could contain a response with status/headers/body (webpage).  
 TCP would be in charge of preparing the request for moving remotely. Port number is assigned.  
 IP would be in charge of partitioning the data into packets. IP address is assigned.  
 ![image](https://miro.medium.com/max/500/1*68SAndvqy3yAdfq9Q83qHg.gif)
