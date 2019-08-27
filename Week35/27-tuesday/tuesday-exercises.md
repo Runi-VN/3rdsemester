@@ -43,7 +43,7 @@ As with any port, the server in question listens to the specific port to provide
 -   What is the IP address of studypoints.dk and how did you find it?
 
 With the use of the Command Prompt and the command **ping <website\>** I got the following results:  
-(Could have used **tracert <website\>** too) 
+(Could have used **tracert <website\>** too)  
 `Studypoints.dk`:  
 ```C:\Users\runin>ping studypoints.dk
 
@@ -73,7 +73,7 @@ Approximate round trip times in milli-seconds:
 
 -   If you write https://studypoints.dk in your browser, how did “it” figure out that it should go to the IP address you discovered above?
 
-Thanks to the DNS server, which works to figure out the IP address based on the URL address. [Details](https://www.cloudflare.com/learning/dns/what-is-dns/)
+Thanks to the DNS server, which works to figure out the IP address based on the URL address. ([Details](https://www.cloudflare.com/learning/dns/what-is-dns/))
     
 -   Explain shortly the purpose of an ip-address and a port-number and why we need both
 
@@ -110,5 +110,3 @@ Funnily enough both my DHCP and Gateway are the same (probably due to my really,
 -   Explain about the HTTP Protocol (the following exercises will go much deeper into this protocol)
     
 -   Explain (conceptually) how HTTP and TCP/IP are connected (what can HTTP do, and where does it fit into TCP/IP)
-
-# nslookup, ipconfig, ping, netstat, tracert, telnet
