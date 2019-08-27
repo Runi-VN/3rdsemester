@@ -21,6 +21,9 @@ Home:
 Private range IPs (**elaborate**)
     
 -   What’s special about this ip-address: 127.0.0.1?
+
+Also known as Localhost (thanks to DNS(?)), this IP is a private IP running on the host. Localhost bypasses any network interface hardware and is run using the Loopback interface. Essentially it can be run locally without access to the remote network.  
+We use localhost for (local) testing purposes before implementing a service on the (remote) web.
     
 -   What kind of service would you expect to find on a server using these ports: 22, 23, 25, 53, 80, 443?  
 
