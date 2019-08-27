@@ -1,5 +1,5 @@
-# Fundamental Network Topics
-[Exercise link](https://docs.google.com/document/d/1RbYJ9hyiqSSASZfuWQtsKwFv7ngQP1-4dceRrKy1LzA/edit)
+# Tuesday Exercise - Fundamental Network Topics
+[Exercise link - Fundamental Network Topics](https://docs.google.com/document/d/1RbYJ9hyiqSSASZfuWQtsKwFv7ngQP1-4dceRrKy1LzA/edit)
 
 -   What is your public IP address right now, and how did you find it?  
 
