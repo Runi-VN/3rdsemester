@@ -3,15 +3,16 @@
 
 -   What is your public IP address right now, and how did you find it?  
 
-With the use of the Command Prompt and the command **ipconfig** I got the following results:  
-School: 10.50.138.198  
+Using the website http://ip4.me/ I got the following results:  
+School: 5.179.80.204
 Home:  
     
 -   What is your private IP address right now (do this both at home and in school), and who/what gave you that address?  
 
 With the use of the Command Prompt and the command **ipconfig** I got the following results:  
-School: 192.168.56.1  
+School: 192.168.56.1 (Ethernet) & 10.50.138.198 (Wi-Fi) 
 Home: 
+
 -   What’s special about these address ranges?
     
       -   10.0.0.0 – 10.255.255.255
@@ -81,3 +82,5 @@ Approximate round trip times in milli-seconds:
 -   Explain about the HTTP Protocol (the following exercises will go much deeper into this protocol)
     
 -   Explain (conceptually) how HTTP and TCP/IP are connected (what can HTTP do, and where does it fit into TCP/IP)
+
+# nslookup, ipconfig, ping, netstat, tracert, telnet
