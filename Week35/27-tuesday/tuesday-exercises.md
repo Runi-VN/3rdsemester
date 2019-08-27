@@ -141,4 +141,5 @@ Currently HTTP/2 is standardized as of 2015 with an upcoming third version.
 HTTP is in the Applications layer and could contain a response with status/headers/body (webpage).  
 TCP would be in charge of preparing the request for moving remotely. Port number is assigned.  
 IP would be in charge of partitioning the data into packets. IP address is assigned.  
-![image](https://miro.medium.com/max/500/1*68SAndvqy3yAdfq9Q83qHg.gif)
+![image](https://miro.medium.com/max/500/1*68SAndvqy3yAdfq9Q83qHg.gif)  
+([Details](https://medium.com/@anna7/internet-protocol-layers-in-internet-protocol-suite-tcp-ip-abe038c0adde))
