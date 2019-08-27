@@ -96,16 +96,34 @@ DNS is often explained as *the phone book of the internet*. IP addresses are use
     
 -   What is your current Gateway, and how did you find it?
 
-I don't know about my *current* gateway, but my default is 10.50.128.1 (school, wifi) & 192.168.1.1 (home, ethernet).
+I don't know about my *current* gateway, but using **ipconfig /all** my default is 10.50.128.1 (school, wifi) & 192.168.1.1 (home, ethernet).
     
 -   What is the address of your current DHCP-Server, and how did you find it?
 
 Using **ipconfig /all** it is 10.255.1.10 (school, wifi) 192.168.1.1 (home, ethernet). 
 
-Funnily enough both my DHCP and Gateway are the same (probably due to my really, really simple router):
+Funnily enough both my DHCP and Gateway are the same (probably due to my really simple router):
 ![image](https://i.imgur.com/aSpeb2B.png)
     
 -   Explain (conceptually) about the TCP/IP-protocol stack
+
+The stack consists of four layers (layer names varies) of communication protocols within the scope of networking:  
+   1. Application layer  
+      Contains protocols regarding data communication services, e.g. HTTP, DNS, FTP, POP, Telnet.  
+   2. Transport Layer  
+      Contains protocols regarding host-to-host communication, e.g. TCP, UDP.
+   3. Internet Layer  
+      Contains protocols regarding local networks ("Internetworking"), handles packets and physical addresses.  
+   4. Link (Network) Layer  
+      Contains protocols regarding communication technologies for the local network. This is the first layer which is also about physical hardware devices. (Ranging from NICs to the physical cable connecting the "link")
+
+([Source](https://docs.google.com/presentation/d/1iXWJoYjDCs568XHDvVwI5I65tnPDRhi--AY-ZwEz9VI/edit#slide=id.p9))
+
+The advantage to the TCP/IP-Protocol is that its Link Layer is interchangeable; the protocol will work with any type of (proper) hardware.
+      
+IP (Internet Layer) doesn't care if a packet gets to its destination or not, it just sends the packet.  
+TCP (Transport Layer) is responsible for routing application protocols to the correct application on the destination computer.  
+([Details](https://medium.com/@anna7/internet-protocol-layers-in-internet-protocol-suite-tcp-ip-abe038c0adde))  
     
 -   Explain about the HTTP Protocol (the following exercises will go much deeper into this protocol)
     
