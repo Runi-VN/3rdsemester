@@ -9,7 +9,7 @@ Home: 87.61.232.155
     
 -   What is your private IP address right now (do this both at home and in school), and who/what gave you that address?  
 
-With the use of the Command Prompt and the command **ipconfig** I got the following results:  
+With the use of the Command Prompt command **ipconfig** I got the following results:  
 School: 192.168.56.1 (Ethernet) & 10.50.138.198 (Wi-Fi)   
 Home: 192.168.1.83 (Ethernet)
 
@@ -19,7 +19,8 @@ Home: 192.168.1.83 (Ethernet)
       -   172.16.0.0 – 172.31.255.255
       -   192.168.0.0 – 192.168.255.255
       
-Private range IPs (**elaborate**)
+Private range IPs meant for use with private networks and *NOT* online.
+![image](https://i.imgur.com/1EJgw9X.png)
     
 -   What’s special about this ip-address: 127.0.0.1?
 
@@ -28,16 +29,19 @@ We use localhost for (local) testing purposes before implementing a service on t
     
 -   What kind of service would you expect to find on a server using these ports: 22, 23, 25, 53, 80, 443?  
 
-Port 22 is used for the SSH (Secure Shell) Remote Login Protocol.  
-Port 23 is used for the Telnet protocol. 
-Port 25 is used for the SMTP (Simlple Mail Transfer Protocol) Protocol.  
-Port 53 is used for the DNS (Domain Name System) Protocol.  
-Port 80 is used for the HTTP (Hypertext Transfer Protocol) Protocol.  
-Port 443 is used for the HTTPS/SSL (Secure Socket Layer).  
+Port 22 is used for the SSH (Secure Shell) Remote Login Protocol. *(For gaining remote access)*  
+Port 23 is used for the Telnet protocol. *("Replaced" by SSH)*  
+Port 25 is used for SMTP (Simple Mail Transfer Protocol). *(For handling mail)*  
+Port 53 is used for the DNS (Domain Name System) Protocol. *(Name/IP resolution service)*  
+Port 80 is used for HTTP (Hypertext Transfer Protocol). *(Handles web requests with the user of a browser application)*  
+Port 443 is used for the HTTPS (Secure HTTP)/SSL (Secure Socket Layer) Protocol. 
+
+As with any port, the server in question listens to the specific port to provide its service.
     
 -   What is the IP address of studypoints.dk and how did you find it?
 
 With the use of the Command Prompt and the command **ping <website\>** I got the following results:  
+(Could have used **tracert <website\>** too) 
 `Studypoints.dk`:  
 ```C:\Users\runin>ping studypoints.dk
 
@@ -67,13 +71,13 @@ Approximate round trip times in milli-seconds:
 
 -   If you write https://studypoints.dk in your browser, how did “it” figure out that it should go to the IP address you discovered above?
 
-Thanks to the DNS server. **elaborate**
+Thanks to the DNS server, which works to figure out the IP address based on the URL address. [Details](https://www.cloudflare.com/learning/dns/what-is-dns/)
     
 -   Explain shortly the purpose of an ip-address and a port-number and why we need both
     
 -   What is your (nearest) DNS server,?
 
-I don't know about my nearest, as I manually use Googles 8.8.8.8/8.8.4.4.  
+I don't know about my nearest, as I manually use Googles public DNS 8.8.8.8/8.8.4.4.  
 Can be found using the CMD command **ipconfig /all**.
     
 -   What is (conceptually) the DNS system and the purpose with a DNS Server?
