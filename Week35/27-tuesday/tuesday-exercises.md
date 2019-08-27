@@ -24,7 +24,9 @@ Private range IPs meant for use with private networks and *NOT* online.
     
 -   What’s special about this ip-address: 127.0.0.1?
 
-Also known as Localhost (thanks to DNS(?)), this IP is a private IP running on the host. Localhost bypasses any network interface hardware (NIC) and is run using the Loopback interface. This means that a request goes through the layer, but once it reaches the NIC it is looped back to the host. Essentially it will be run locally without access to the remote network.  
+Also known as Localhost (thanks to DNS(?)), this IP is a private IP running on the host.   
+Localhost bypasses any network interface hardware (NIC) and is run using the Loopback interface. This means that a request goes through the layer, but once it reaches the NIC it is looped back to the host.  
+Essentially it will be run locally without access to the remote network.  
 We use localhost for (local) testing purposes before implementing a service on the (remote) web.
     
 -   What kind of service would you expect to find on a server using these ports: 22, 23, 25, 53, 80, 443?  
@@ -74,6 +76,12 @@ Approximate round trip times in milli-seconds:
 Thanks to the DNS server, which works to figure out the IP address based on the URL address. [Details](https://www.cloudflare.com/learning/dns/what-is-dns/)
     
 -   Explain shortly the purpose of an ip-address and a port-number and why we need both
+
+The IP address is for the "location" of your device on a network.   
+Often you will have a private network, where each device will have a private IP address, and these devices will connect to a gateway host. ("Router")  
+The gateway will then connect to the public network, using it's public IP address.
+
+Port numbers specify the specific service requested from the host. Ports are used to share network resources efficiently and simultaneously.
     
 -   What is your (nearest) DNS server,?
 
@@ -81,10 +89,14 @@ I don't know about my nearest, as I manually use Googles public DNS 8.8.8.8/8.8.
 Can be found using the CMD command **ipconfig /all**.
     
 -   What is (conceptually) the DNS system and the purpose with a DNS Server?
+
+DNS is often explained as *the phone book of the internet*. IP addresses are used as computers work with binary numbers, something that may not work as well with humans. The DNS handles my request to `facebook.com` by contacting several services to ensure the actual IP Address `31.13.72.36`.
+![Image](https://www.cloudflare.com/img/learning/dns/what-is-dns/dns-lookup-diagram.png)
+*[Details of step 1-10](https://www.cloudflare.com/learning/dns/what-is-dns/)*
     
 -   What is your current Gateway, and how did you find it?
 
-I don't know about my *current* gateway, but my default is 10.50.128.1 (school, wifi) & 192.168.1.1 (home, ethernet). **elaborate**
+I don't know about my *current* gateway, but my default is 10.50.128.1 (school, wifi) & 192.168.1.1 (home, ethernet).
     
 -   What is the address of your current DHCP-Server, and how did you find it?
 
