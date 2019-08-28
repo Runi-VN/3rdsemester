@@ -144,3 +144,11 @@ The http-address changed permanently to the https-address thanks to an redirect 
 Simply put, a cookie is a small piece of data stored on the client-side which servers use when communicating with clients. Cookies are used to identify a client when sending a subsequent request.
 
 ## Exercise 8
+- Default cookie age is 30 minutes. During the exercise we set it to one year. The client (browser) will hold the cookie for one year and the server will request it 
+  - Cookies are used to save stateful information for the otherwise stateless HTTP.
+- Entering `http://localhost:8080/wednesday_7-8/CookieDemo?name=R%C3%BAni` give some interesting headers:  
+![](https://i.imgur.com/N6pPjQQ.png)  
+- Closing down and opening again brings the following interesting header:
+  - `Cookie: JSESSIONID=B442F9D7C46BBB017FD939F40C0506D6; username=Rúni`
+- Her er endnu en spændende kilde fra min browsers indstillinger, som viser dens information om cookien:  
+![](https://i.imgur.com/kAi25PV.png)  
