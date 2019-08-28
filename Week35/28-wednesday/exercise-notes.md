@@ -42,7 +42,7 @@ Explaining HTTP headers. This is what I got:
 - Where is the abovementioned resource located? Here!
 
 ##### Connection
-- This header controls whether or not the network connection stays open after the current transaction finishes. [Options: Keep-Alive, Closed]  
+- This header controls whether or not the network connection stays open after the current transaction finishes. (Reduces handshakes) [Options: Keep-Alive, Closed]  
   - Keep-Alive has either default values or parameter options for timeout (earliest timeout) or max (max amount of requests).
 
 ##### Cache-control
@@ -83,18 +83,37 @@ explain:
 - I get two GET-requests, one for redirect with a status code of [302 FOUND](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302) and one for r.html with a status code of 200 OK.
 
 ##### How the browser knew where to go in the second request
+- We set up a servlet to send a redirect to the `r.html`-resource to any and all GET-requests to the `/redirect`-URI.
 
 
-## Exercise 4  
+## Exercise 3a  
+Head to the unsafe version of studypoints.info and explain what happens.
+- The header returns the following:
+  - Request URL: http://studypoints.info/
+  - Request Method: GET
+  - Status Code: 301 Moved Permanently
+- The response returns this interesting part:
+  - Location: https://studypoints.info/
+  - Server: nginx/1.14.0 (Ubuntu)
+  
+The http-address changed permanently to the https-address thanks to an redirect (probably done by the nginx service(?)).
+
+## Exercise 4a  
+<img src="https://i.imgur.com/6qLwJcn.png" align="right">  
+
+- Tomcat gives us the java exception while the status code 500 (INTERNAL SERVER ERROR) is returned.  
+- Another interesting part is how the connection is set to `close` instead of the regular `Keep-Alive`.  
+
+## Exercise 4b
+- Returns an 404 error (not found) status code.
+
+
+## Exercise 4c
+-  1xx (Informational): The request was received, continuing process
+-  2xx (Successful): The request was successfully received, understood and accepted
+-  3xx (Redirection): Further action needs to be taken in order to complete the request
+-  4xx (Client Error): The request contains bad syntax or cannot be fulfilled
+-  5xx (Server Error): The server failed to fulfill an apparently valid request
 
 
 ## Exercise 5  
-
-
-## Exercise 6  
-
-
-## Exercise 7  
-
-
-## Exercise 8  
