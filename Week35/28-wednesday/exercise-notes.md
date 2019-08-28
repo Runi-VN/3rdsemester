@@ -32,7 +32,6 @@ Explaining HTTP headers. This is what I got:
 ##### Date
 - Date of the response. 2 hours behind local-time, as we are in GMT+2 due to timezone + summertime.
 
-
 ---- 
 ### Request Headers  
 
@@ -43,8 +42,17 @@ Explaining HTTP headers. This is what I got:
 - Where is the abovementioned resource located? Here!
 
 ##### Connection
-- 
+- This header controls whether or not the network connection stays open after the current transaction finishes. [Options: Keep-Alive, Closed]  
+  - Keep-Alive has either default values or parameter options for timeout (earliest timeout) or max (max amount of requests).
 
+##### Cache-control
+- Handles caching functions, max-age has a parameter of seconds. Can also handle cache type and [much more](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control).
+
+##### Upgrade-Insecure-Requests
+- Handles requests for upgrading from HTTP to HTTPs. If a request is made and HTTPs is available it can now redirect to the HTTP version.
+
+##### User-Agent
+- Contains information about the client, in this case we are Mozilla-compatible, running Windows 10, an AppleWebKit with KHTML on a Chrome Browser that is based on Safari. [Neat website with explanation](http://useragentstring.com/).
 
 
 
