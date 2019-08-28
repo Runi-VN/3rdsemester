@@ -117,3 +117,6 @@ The http-address changed permanently to the https-address thanks to an redirect 
 
 
 ## Exercise 5  
+- Here is a picture of my solution:
+
+![tablesolutionimage](https://i.imgur.com/HyAHmtu.png)
