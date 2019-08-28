@@ -52,10 +52,25 @@ Explaining HTTP headers. This is what I got:
 - Handles requests for upgrading from HTTP to HTTPs. If a request is made and HTTPs is available it can now redirect to the HTTP version.
 
 ##### User-Agent
-- Contains information about the client, in this case we are Mozilla-compatible, running Windows 10, an AppleWebKit with KHTML on a Chrome Browser that is based on Safari. [Neat website with explanation](http://useragentstring.com/).
+- Contains information about the client, in this case we are shown compatibility with Mozilla, AppleWebKit, KHTML/Gecko and Safari, running Windows 10 through a Chrome V76 Browser. [Neat website with explanation](http://useragentstring.com/).
 
+##### Sec-Fetch-Mode/Sec-Fetch-User/Sec-Fetch-Site
+- Kind of hard to find details about, I believe it is related to Document Fetching on the Request interface. It is explained partly [here](https://w3c.github.io/webappsec-fetch-metadata/#sec-fetch-mode-header). I believe it is out of scope for this assignment.
 
+##### Accept
+- The kind of MIME-types (document-types) accepted by the request.
 
+##### Accept-Encoding
+- The kind of encodings accepted by the request.
+
+##### Accept-Language
+- The kind of languages acepted by the request.
+
+##### If-None-Match:
+- Cache *ETag* to use in case of no modifications since last check. See below.
+
+##### If-Modified-Since
+- Date since last cache (11 minutes). Since there were no changes since then we loaded the cache with the mentioned ETag.
 
 ## Exercise 2
 
