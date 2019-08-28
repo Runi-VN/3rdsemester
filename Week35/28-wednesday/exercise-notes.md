@@ -136,10 +136,11 @@ The http-address changed permanently to the https-address thanks to an redirect 
 - Closing the tab and reloading, the cookie is still the same:
   - `Cookie: JSESSIONID=FF3A75E8F0239DF3E9E87156C8A5663E`
 - Removing parameters and reloading, the cookie is still the same:  
-![](https://i.imgur.com/3lyy413.png)  
+![](https://i.imgur.com/z8tKdqS.png)  
 
 - Tomcat Manager has a good way of showing what is going on:
 ![](https://i.imgur.com/lhvjDYF.png)
 
-Simply put, a cookie is a small piece of data stored on the client-side which servers use when communicating with clients.  
-They're used to identify a client when sending a subsequent request.
+Simply put, a cookie is a small piece of data stored on the client-side which servers use when communicating with clients. Cookies are used to identify a client when sending a subsequent request.
+
+## Exercise 8
