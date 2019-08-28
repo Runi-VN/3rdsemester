@@ -120,3 +120,14 @@ The http-address changed permanently to the https-address thanks to an redirect 
 - Here is a picture of my solution:
 
 ![tablesolutionimage](https://i.imgur.com/HyAHmtu.png)
+
+## Exercise 6
+- GET-method returns the following: `/formtest.html?firstName=Bølle&lastName=Bob&hidden=12345678#`
+  - Everything is shown in the address bar.  
+![](https://i.imgur.com/tZl2k57.png)
+
+- POST-method returns the following: `/formtest.html#`
+  - Everything is in the header.  
+![](https://i.imgur.com/eer16av.png)
+
+## Exercise 7
