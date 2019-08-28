@@ -73,9 +73,16 @@ Explaining HTTP headers. This is what I got:
 - Date since last cache (11 minutes). Since there were no changes since then we loaded the cache with the mentioned ETag.
 
 ## Exercise 2
+explain the purpose of the connection header.
+- See above.
 
 
 ## Exercise 3  
+explain:
+##### The two HTTP-request you see
+- I get two GET-requests, one for redirect with a status code of [302 FOUND](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302) and one for r.html with a status code of 200 OK.
+
+##### How the browser knew where to go in the second request
 
 
 ## Exercise 4  
