@@ -150,5 +150,5 @@ Simply put, a cookie is a small piece of data stored on the client-side which se
 ![](https://i.imgur.com/N6pPjQQ.png)  
 - Closing down and opening again brings the following interesting header:
   - `Cookie: JSESSIONID=B442F9D7C46BBB017FD939F40C0506D6; username=Rúni`
-- Her er endnu en spændende kilde fra min browsers indstillinger, som viser dens information om cookien:  
+- Here's another interesting image, showing my browsers settings tab and how it stores the cookie.  
 ![](https://i.imgur.com/kAi25PV.png)  
