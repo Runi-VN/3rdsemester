@@ -115,6 +115,8 @@ The http-address changed permanently to the https-address thanks to an redirect 
 -  4xx (Client Error): The request contains bad syntax or cannot be fulfilled
 -  5xx (Server Error): The server failed to fulfill an apparently valid request
 
+I have explained the status codes in the 3xx range as I have encountered them, so I won't do it here.
+
 
 ## Exercise 5  
 - Here is a picture of my solution:
