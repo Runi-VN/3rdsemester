@@ -3,3 +3,14 @@ language: java
 jdk: oraclejdk8
 
 dist: trusty
+
+matrix:
+  include:
+    - os: linux
+      jdk: oraclejdk8
+
+# Input the path to your pom.xml in the projects you wanna Travis:
+script:
+  - mvn -q -B -f master/Week36/02-monday/travisGettingStarted/pom.xml clean verify
+
+  #thanks to Malte https://github.com/MalteMagnussen/3.-Semester/blob/master/.travis.yml
