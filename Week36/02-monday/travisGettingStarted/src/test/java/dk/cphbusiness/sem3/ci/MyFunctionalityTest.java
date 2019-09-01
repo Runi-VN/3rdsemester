@@ -1,6 +1,5 @@
 package dk.cphbusiness.sem3.ci;
 
-import dk.cphbusiness.sem3.ci.MyFunctionality;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
