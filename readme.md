@@ -1,6 +1,6 @@
 # Third Semester
 
-This is a repository for my weekly tasks, to use with Peergrade.io.
+This is a repository for my weekly tasks, to use with [Peergrade.io](https://www.peergrade.io).
 
 ## I'm here to review! What now?
 For reviews, please choose the folder for the current week above.  
