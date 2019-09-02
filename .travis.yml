@@ -12,5 +12,6 @@ matrix:
 # Input the path to your pom.xml in the projects you wanna Travis:
 script:
   - mvn -q -B -f Week36/02-monday/travisGettingStarted/pom.xml clean verify
+  - mvn -q -B -f Week36/02-monday/Test-Ci-With-StartCode/pom.xml clean verify
 
-  #thanks to Malte https://github.com/MalteMagnussen/3.-Semester/blob/master/.travis.yml
+# Thanks to Malte https://github.com/MalteMagnussen/3.-Semester/blob/master/.travis.yml
