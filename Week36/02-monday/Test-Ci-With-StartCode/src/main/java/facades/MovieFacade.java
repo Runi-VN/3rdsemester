@@ -74,7 +74,7 @@ public class MovieFacade {
         }
     }
 
-    List<MovieDTO> getAllMovieDTOs() throws Exception {
+    public List<MovieDTO> getAllMovieDTOs() throws Exception {
         EntityManager em = getEntityManager();
         try {
             return em.createQuery("SELECT new dto.MovieDTO(m) FROM Movie m", MovieDTO.class).getResultList();
@@ -86,4 +86,45 @@ public class MovieFacade {
         }
     }
 
+    public MovieDTO getMovieByID(Long id) throws Exception {
+        EntityManager em = getEntityManager();
+        try {
+            return new MovieDTO(em.find(Movie.class, id));
+//        } catch (Exception ex) {
+//            em.getTransaction().rollback();
+//            throw new Exception("Could not retrieve specific movie: " + ex.getMessage());
+        } finally {
+            em.close();
+        }
+    }
+
+    /**
+     * For retrieving all details in form of a Movie and not a DTO
+     *
+     * @param id
+     * @return
+     * @throws java.lang.Exception
+     */
+    public Movie getMovieByIDDetailed(Long id) throws Exception {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(Movie.class, id);
+        } catch (Exception ex) {
+            em.getTransaction().rollback();
+            throw new Exception("Could not retrieve specific movie: " + ex.getMessage());
+        } finally {
+            em.close();
+        }
+    }
+
+    public void removeMovie(Movie movie) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(em.merge(movie)); //first we merge ("find"), then we remove
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
 }

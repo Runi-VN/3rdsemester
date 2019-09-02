@@ -1,15 +1,14 @@
 package facades;
 
 import dto.MovieDTO;
-import utils.EMF_Creator;
 import entities.Movie;
+import utils.EMF_Creator;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeAll;
@@ -36,8 +35,8 @@ public class MovieFacadeTest {
 
         //add to collection
         movies.add(new Movie("The Fellowship of the Ring", Date.valueOf("2001-12-19"), 10, 100000));
-        movies.add(new Movie("The Two Towers", Date.valueOf("2002-12-18"), 10, 123455678));
-        movies.add(new Movie("The Return of the King", Date.valueOf("2003-12-17"), 10, 999999999));
+        movies.add(new Movie("The Two Towers", Date.valueOf("2002-12-18"), 9, 123455678));
+        movies.add(new Movie("The Return of the King", Date.valueOf("2003-12-17"), 8, 999999999));
 
         try {
             for (Movie m : movies) {
@@ -60,22 +59,82 @@ public class MovieFacadeTest {
         assertNotNull(result);
         assertEquals(expResult, result);
     }
-    
-     @org.junit.jupiter.api.Test
-    public void testGetAllMovies() throws Exception{
+
+    /**
+     * Tests DTO
+     *
+     * @throws Exception
+     */
+    @org.junit.jupiter.api.Test
+    public void testGetAllMovies() throws Exception {
         //Arrange
         List<MovieDTO> expResult = new ArrayList();
         List<MovieDTO> result;
-        for (Movie m : movies)
-        {
+        for (Movie m : movies) {
             expResult.add(new MovieDTO(m));
         }
         //Act
-        result = facade.getAllMovieDTOs()   ;
+        result = facade.getAllMovieDTOs();
         //Assert
         assertNotNull(result);
         assertEquals(expResult, result);
-                
+
+    }
+
+    /**
+     * Tests DTO
+     *
+     * @throws Exception
+     */
+    @org.junit.jupiter.api.Test
+    public void testGetMovieByID() throws Exception {
+        //Arrange
+        MovieDTO expResult = new MovieDTO(movies.get(0));
+        MovieDTO result;
+        Long id = 1L;
+        //Act
+        result = facade.getMovieByID(id);
+        //Assert
+        assertNotNull(result);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Tests returning a movie and _NOT_ a DTO
+     */
+    @org.junit.jupiter.api.Test
+    public void testGetMovieByIDDetailed() throws Exception {
+        //Arrange
+        Movie expResult = movies.get(1);
+        Movie result;
+        Long id = 2L;
+        //Act
+        expResult.setId(id); //Movie.equals() takes IDs into account.
+        result = facade.getMovieByIDDetailed(id);
+        //Assert
+        assertNotNull(result);
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Also tests removeMovie
+     *
+     * @throws Exception
+     */
+    @org.junit.jupiter.api.Test
+    public void testAddMovie() throws Exception {
+        //Arrange
+        Movie expResult = new Movie("The Hobbit: An Unexpected Journey", Date.valueOf("2012-12-12"), 3, 17500);
+        Movie result;
+        //Act
+        result = facade.addMovie(expResult);
+        //Assert
+        assertNotNull(result);
+        assertEquals(expResult, result);
+
+        //If everything worked out, lets delete the movie before next test runs.
+        facade.removeMovie(expResult);
     }
 
     // Setup the DataBase in a known state BEFORE EACH TEST

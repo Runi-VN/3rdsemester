@@ -15,6 +15,9 @@ public class MovieDTO {
     private Date releaseDate;
     private int movieScore; //0-10
 
+    public MovieDTO() {
+    }
+
     public MovieDTO(Movie movie) {
         this.movieID = movie.getId();
         this.movieName = movie.getName();

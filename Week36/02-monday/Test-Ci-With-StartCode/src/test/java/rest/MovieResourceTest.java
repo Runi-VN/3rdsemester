@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.parsing.Parser;
 import java.net.URI;
+import java.sql.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
@@ -24,12 +25,12 @@ import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class RenameMeResourceTest {
+public class MovieResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
     //Read this line from a settings-file  since used several places
-    private static final String TEST_DB = "jdbc:mysql://localhost:3307/startcode_test";
+    private static final String TEST_DB = "jdbc:mysql://localhost:3307/moviedb_test";
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -70,10 +71,10 @@ public class RenameMeResourceTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new Movie("Some txt","More text"));
-            em.persist(new Movie("aaa","bbb"));
-           
+            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+            em.persist(new Movie("The Fellowship of the Ring", Date.valueOf("2001-12-19"), 10, 100000));
+            em.persist(new Movie("The Two Towers", Date.valueOf("2002-12-18"), 9, 123455678));
+            em.persist(new Movie("The Return of the King", Date.valueOf("2003-12-17"), 8, 999999999));
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -83,7 +84,7 @@ public class RenameMeResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/xxx").then().statusCode(200);
+        given().when().get("/movies").then().statusCode(200);
     }
    
     //This test assumes the database contains two rows
@@ -91,19 +92,30 @@ public class RenameMeResourceTest {
     public void testDummyMsg() throws Exception {
         given()
         .contentType("application/json")
-        .get("/xxx/").then()
+        .get("/movies/").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("msg", equalTo("Hello World"));   
+        .body("msg", equalTo("Populated DB"));   
     }
     
     @Test
     public void testCount() throws Exception {
         given()
         .contentType("application/json")
-        .get("/xxx/count").then()
+        .get("/movies/count").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("count", equalTo(2));   
+        .body("count", equalTo(3));   
+    }
+    
+    @Disabled
+    @Test
+    public void testGetByID() throws Exception {
+        given()
+        .contentType("application/json")
+        .get("/movies/1").then()
+        .assertThat()
+        .statusCode(HttpStatus.OK_200.getStatusCode())
+        .body("movie", equalTo(new Movie("The Fellowship of the Ring", Date.valueOf("2001-12-19"), 10, 100000)));   
     }
 }
