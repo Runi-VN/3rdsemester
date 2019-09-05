@@ -42,6 +42,7 @@
 # Custom
 /Template - REST_JPA/
 /Template - REST_JPA_DEVOPS/
+/backup/
 
 # End of https://www.gitignore.io/api/windows,netbeans
 /Week34/friday/nbproject/
