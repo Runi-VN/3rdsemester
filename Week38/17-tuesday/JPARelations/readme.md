@@ -44,16 +44,21 @@ Before the extra step, `ADDRESS` contains a column `CUSTOMER_CUSTOMER_ID` with a
 
 I excepted to fix this with some smart JPA-join but failed to find a solution.  
 Instead I found two solutions, both with the goal of persisting `ADDRESS` with a `CUSTOMER` **through the new `customer`-field:  
- 1) Generate and use a setter for `ADDRESS` like ```java  
- address.setCustomer(Customer customer)```  
- 2) Generate and use a new constructor for `ADDRESS` like: ```java  
+ 1) Generate and use a setter for `ADDRESS` like  
+ 
+```java  
+address.setCustomer(Customer customer)
+```  
+ 2) Generate and use a new constructor for `ADDRESS` like:  
+ 
+ ```java  
  public Address(String street, String city, Customer customer) {
         this.street = street;
         this.city = city;
         this.customer = customer;
-    }```  
-	
-
+    }
+```  
+    
 ### 5) Many To Many (bidirectional)  
 (**In regards to 1st and 2nd semester**)  
 - How can we implement ManyToMany relationships in an OO-language like Java?  
