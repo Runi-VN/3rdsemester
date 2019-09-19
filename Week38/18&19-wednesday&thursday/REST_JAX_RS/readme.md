@@ -52,3 +52,8 @@ editPerson()
 ![](https://i.imgur.com/E5qwPgw.png)  
 
 ### 7) Complete the deletePerson(..) method in the facade, and implement a matching REST endpoint. Test using Postman  
+deletePerson()  
+**BEFORE**  
+![](https://i.imgur.com/Y8nwlFU.png)  
+**AFTER**  
+![](https://i.imgur.com/TVLqlNK.png)  
