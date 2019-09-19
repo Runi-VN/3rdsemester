@@ -4,16 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import dto.PersonDTO;
+import dto.PersonDTO_create;
 import dto.PersonsDTO;
 import entities.Person;
 import utils.EMF_Creator;
 import facades.PersonFacadeImpl;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -21,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("person")
 public class PersonResource {
@@ -39,29 +38,11 @@ public class PersonResource {
     @Path("/populate")
     @Produces({MediaType.APPLICATION_JSON})
     public String populate() {
-        EntityManager em = EMF.createEntityManager();
-        List<Person> persons = new ArrayList(); //init
+        facade.addPerson("Runi", "Vedel", "112");
+        facade.addPerson("Knud", "Knudsen", "12345678");
+        facade.addPerson("Per", "Pedersen", "55128922");
+        facade.addPerson("Johnny", "Larsen", "10302040");
 
-        persons.add(new Person("Runi", "Vedel", "112"));
-        persons.add(new Person("Knud", "Knudsen", "12345678"));
-        persons.add(new Person("Per", "Pedersen", "55128922"));
-        persons.add(new Person("Johnny", "Larsen", "10302040"));
-
-        try {
-            //reset DB tables, AutoIncrement-counter
-            em.getTransaction().begin();
-            Query query = em.createNativeQuery("truncate table Week5Day3_test.PERSON;");
-            query.executeUpdate();
-            em.getTransaction().commit();
-            //add collection to DB
-            persons.forEach(p -> {
-                em.getTransaction().begin();
-                em.persist(p);
-                em.getTransaction().commit();
-            });
-        } finally {
-            em.close();
-        }
         JsonObject dbMsg = new JsonObject();
         dbMsg.addProperty("msg", "Populated DB");
         return GSON.toJson(dbMsg);
@@ -107,16 +88,13 @@ public class PersonResource {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public String addPerson(String person) {
+    public Response addPerson(String person_JSON) {
         try {
-            PersonDTO incoming = GSON.fromJson(person, PersonDTO.class);
-            Person result = facade.addPerson(incoming.getfName(), incoming.getlName(), incoming.getPhone());
-            PersonDTO response = new PersonDTO(); //ensure we live up to the assignment of DTO-display only
-            response.setfName(result.getFirstName());
-            response.setlName(result.getLastName());
-            response.setPhone(result.getPhone());
-            //return Response.ok(response).build();
-            return GSON.toJson(response);
+            PersonDTO person = GSON.fromJson(person_JSON, PersonDTO.class);
+            Person result = facade.addPerson(person.getfName(), person.getlName(), person.getPhone());
+            PersonDTO_create response = new PersonDTO_create(result); //ensure we live up to the assignment of DTO-display only
+            return Response.ok(response).build();
+            //return GSON.toJson(response);
         } catch (Exception ex) {
             throw new IllegalArgumentException("You messed up the add method: " + ex.getMessage());
             //return new PersonResource().jsonException(ex.getMessage());
@@ -127,16 +105,26 @@ public class PersonResource {
     @PUT
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public String editPerson(String person) {
+    public Response editPerson(String person_JSON) {
         try {
-            PersonDTO incoming = GSON.fromJson(person, PersonDTO.class);
-            Person target = facade.getPerson((int) incoming.getId());
-            PersonDTO response = new PersonDTO(facade.editPerson(target));
-            //return Response.ok(response).build();
-            return GSON.toJson(response);
+            Person person = GSON.fromJson(person_JSON, Person.class);
+            PersonDTO edited = new PersonDTO(facade.editPerson(person));
+            return Response.ok(edited).build();
+            //return GSON.toJson(response);
         } catch (Exception ex) {
             throw new IllegalArgumentException("You messed up the add method: " + ex.getMessage());
             //return new PersonResource().jsonException(ex.getMessage());
+        }
+    }
+
+    @Path("/{id}/delete")
+    @DELETE
+    @Produces({MediaType.APPLICATION_JSON})
+    public String deletePerson(@PathParam("id") int id) {
+        try {
+            return GSON.toJson(new PersonDTO(facade.deletePerson(id)));
+        } catch (Exception ex) {
+            return new PersonResource().jsonException(ex.getMessage());
         }
     }
 

@@ -101,14 +101,11 @@ public class PersonFacadeImplTest {
         //Assert
         Assertions.assertNotNull(result);
         assertEquals(expResult, result);
-
-        //TODO Delete above
     }
 
     /**
      * Test of deletePerson method, of class PersonFacadeImpl.
      */
-    @Disabled
     @org.junit.jupiter.api.Test
     public void testDeletePerson() {
         //Arrange
@@ -173,6 +170,7 @@ public class PersonFacadeImplTest {
         //Act
         expResult.setFirstName("Bigfoot");
         result = facade.editPerson(expResult);
+        //expResult.setId(result.getId());
 
         //Assert
         Assertions.assertNotNull(result);

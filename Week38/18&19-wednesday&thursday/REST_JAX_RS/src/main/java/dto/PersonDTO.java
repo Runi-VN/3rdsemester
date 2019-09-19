@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class PersonDTO {
 
-    private long id;
     private String fName;
     private String lName;
     private String phone;
+    private long id; //id required at the end...
 
     public PersonDTO(Person p) {
         this.fName = p.getFirstName();
@@ -94,5 +94,12 @@ public class PersonDTO {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "PersonDTO{" + "fName=" + fName + ", lName=" + lName + ", phone=" + phone + ", id=" + id + '}';
+    }
+    
+    
 
 }

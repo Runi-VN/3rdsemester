@@ -3,6 +3,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +27,10 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
     private String phone;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(updatable = false)
     private Date created;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastEdited;
 
     public Person() {
@@ -94,15 +96,14 @@ public class Person implements Serializable {
         return created;
     }
 
-    /**
-     * Set the value of created
-     *
-     * @param created new value of created
-     */
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
+////    /**
+////     * Set the value of created
+////     *
+////     * @param created new value of created
+////     */
+////    public void setCreated(Date created) {
+////        this.created = created;
+////    }
     /**
      * Get the value of lastEdited
      *
@@ -202,5 +203,5 @@ public class Person implements Serializable {
     public String toString() {
         return "Person{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", created=" + created + ", lastEdited=" + lastEdited + '}';
     }
-    
+
 }

@@ -91,13 +91,17 @@ public class PersonFacadeImpl implements PersonFacade {
     public Person deletePerson(int id) {
         EntityManager em = getEntityManager();
         try {
-
+            em.getTransaction().begin();
+            Person result = em.find(Person.class, id);
+            em.remove(result);
+            em.getTransaction().commit();
+            return result;
         } catch (Exception ex) {
-
+            em.getTransaction().rollback();
+            throw new IllegalStateException("Problem deleting person: " + ex.getMessage());
         } finally {
             em.close();
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
