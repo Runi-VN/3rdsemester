@@ -149,6 +149,18 @@ public class PersonResourceTest {
         MatcherAssert.assertThat((result), equalTo(new PersonDTO(expResult)));
     }
 
+    @Test
+    public void testGetPersonException() {
+        int id = 1000;
+        given()
+                .get("/person/{id}", id).then()
+                .assertThat()
+                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode()).
+                body("code", equalTo(404)).
+                body("message", equalTo("No person with provided id found"));
+
+    }
+
     /**
      * Test of getAllPersons method, of class PersonResource.
      */
@@ -216,7 +228,7 @@ public class PersonResourceTest {
                         .body(expResult) //include object in body
                         .contentType("application/json")
                         .when().request("PUT", "/person/edit").then() //put REQUEST
-                        .assertThat().log().body()
+                        .assertThat()//.log().body()
                         .statusCode(HttpStatus.OK_200.getStatusCode())
                         .extract()
                         .as(PersonDTO.class); //extract result JSON as object
@@ -242,7 +254,7 @@ public class PersonResourceTest {
                         .when()
                         .request("DELETE", "/person/{id}/delete", id) //DELETE REQUEST
                         .then()
-                        .assertThat().log().body()
+                        .assertThat()//.log().body()
                         //.statusCode(HttpStatus.OK_200.getStatusCode())
                         .extract()
                         .as(PersonDTO.class); //extract result JSON as object
@@ -250,5 +262,26 @@ public class PersonResourceTest {
         //Assert
         MatcherAssert.assertThat((result), equalTo(expResult)); //convert to personDTO
 
+    }
+
+    @Test
+    public void testDeletePersonException() {
+        int id = 1000;
+        given()
+                .delete("/person/{id}/delete", id).then()
+                .assertThat()
+                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode()).
+                body("code", equalTo(404)).
+                body("message", equalTo("Could not delete, provided id does not exist"));
+    }
+
+    @Test
+    public void testGetFail() {
+        given()
+                .get("/person/fail").then()
+                .assertThat()
+                .statusCode(HttpStatus.INTERNAL_SERVER_ERROR_500.getStatusCode()).
+                body("code", equalTo(500)).
+                body("message", equalTo("Internal Server Problem. We are sorry for the inconvenience"));
     }
 }

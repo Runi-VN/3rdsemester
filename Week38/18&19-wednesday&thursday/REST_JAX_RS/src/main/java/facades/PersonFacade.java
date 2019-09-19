@@ -2,6 +2,8 @@ package facades;
 
 import java.util.List;
 import entities.Person;
+import exceptions.MissingInputException;
+import exceptions.PersonNotFoundException;
 
 /**
  *
@@ -9,14 +11,14 @@ import entities.Person;
  */
 public interface PersonFacade {
 
-    public Person addPerson(String fName, String lName, String phone);
+    public Person addPerson(String fName, String lName, String phone) throws MissingInputException;
 
-    public Person deletePerson(int id);
+    public Person deletePerson(int id) throws PersonNotFoundException;
 
-    public Person getPerson(int id);
+    public Person getPerson(int id) throws PersonNotFoundException;
 
-    public List<Person> getAllPersons();
+    public List<Person> getAllPersons() throws PersonNotFoundException;
 
-    public Person editPerson(Person p);
+    public Person editPerson(Person p) throws MissingInputException;
 
 }

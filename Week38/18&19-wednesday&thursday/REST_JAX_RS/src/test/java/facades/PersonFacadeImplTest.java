@@ -2,6 +2,8 @@ package facades;
 
 import utils.EMF_Creator;
 import entities.Person;
+import exceptions.MissingInputException;
+import exceptions.PersonNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -84,9 +86,11 @@ public class PersonFacadeImplTest {
 
     /**
      * Test of addPerson method, of class PersonFacadeImpl.
+     *
+     * @throws exceptions.MissingInputException
      */
     @org.junit.jupiter.api.Test
-    public void testAddPerson() {
+    public void testAddPerson() throws MissingInputException {
         //Arrange
         String fName = "Test";
         String lName = "Testerson";
@@ -105,9 +109,11 @@ public class PersonFacadeImplTest {
 
     /**
      * Test of deletePerson method, of class PersonFacadeImpl.
+     *
+     * @throws exceptions.PersonNotFoundException
      */
     @org.junit.jupiter.api.Test
-    public void testDeletePerson() {
+    public void testDeletePerson() throws PersonNotFoundException {
         //Arrange
         int elementPosition = 3;
         Person expResult = persons.get(elementPosition);
@@ -122,11 +128,25 @@ public class PersonFacadeImplTest {
         assertEquals(expResult, result);
     }
 
+    @org.junit.jupiter.api.Test
+    public void testDeletePersonException() {
+        //Arrange
+        int expectedId = 1000;
+
+        //Act
+        //Assert
+        Assertions.assertThrows(PersonNotFoundException.class, () -> {
+            facade.deletePerson(expectedId);
+        });
+    }
+
     /**
      * Test of getPerson method, of class PersonFacadeImpl.
+     *
+     * @throws exceptions.PersonNotFoundException
      */
     @org.junit.jupiter.api.Test
-    public void testGetPerson() {
+    public void testGetPerson() throws PersonNotFoundException {
         //Arrange
         int elementPosition = 2;
         Person expResult = persons.get(elementPosition);
@@ -141,11 +161,23 @@ public class PersonFacadeImplTest {
         assertEquals(expResult, result);
     }
 
+    @org.junit.jupiter.api.Test
+    public void testGetPersonException() throws PersonNotFoundException {
+        //Arrange
+        int expectedId = 1000;
+
+        //Act
+        //Assert
+        Assertions.assertThrows(PersonNotFoundException.class, () -> {
+            facade.getPerson(expectedId);
+        });
+    }
+
     /**
      * Test of getAllPersons method, of class PersonFacadeImpl.
      */
     @org.junit.jupiter.api.Test
-    public void testGetAllPersons() {
+    public void testGetAllPersons() throws PersonNotFoundException {
         //Arrange
         List<Person> expResult = persons;
         List<Person> result;
@@ -160,9 +192,11 @@ public class PersonFacadeImplTest {
 
     /**
      * Test of editPerson method, of class PersonFacadeImpl.
+     *
+     * @throws exceptions.MissingInputException
      */
     @org.junit.jupiter.api.Test
-    public void testEditPerson() {
+    public void testEditPerson() throws MissingInputException {
         //Arrange
         Person expResult = persons.get(3);
         Person result;

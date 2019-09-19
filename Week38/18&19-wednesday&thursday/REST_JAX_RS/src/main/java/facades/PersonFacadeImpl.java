@@ -1,6 +1,8 @@
 package facades;
 
 import entities.Person;
+import exceptions.MissingInputException;
+import exceptions.PersonNotFoundException;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -42,80 +44,95 @@ public class PersonFacadeImpl implements PersonFacade {
     }
 
     @Override
-    public Person getPerson(int id) {
+    public Person getPerson(int id) throws PersonNotFoundException {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Person.class, id);
-        } catch (Exception ex) {
-            throw new IllegalArgumentException("Problem finding person: " + ex.getMessage());
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public List<Person> getAllPersons() {
-        EntityManager em = getEntityManager();
-        try {
-            return em.createNamedQuery("Person.getAllPersons").getResultList();
-        } catch (Exception ex) {
-            throw new IllegalArgumentException("Problem finding all persons: " + ex.getMessage());
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public Person addPerson(String fName, String lName, String phone) {
-        if (fName != null && lName != null && phone != null
-                && !fName.isEmpty() && !lName.isEmpty() && !phone.isEmpty()) {
-            EntityManager em = getEntityManager();
-            try {
-                Person target = new Person(fName, lName, phone);
-                em.getTransaction().begin();
-                em.persist(target);
-                em.getTransaction().commit();
-                return target;
-            } catch (Exception ex) {
-                em.getTransaction().rollback();
-                throw new IllegalStateException("Problem adding person: " + ex.getMessage());
-            } finally {
-                em.close();
+            Person person = em.find(Person.class, id);
+            if (person != null) {
+                return person;
             }
-        } else {
-            throw new IllegalArgumentException("Input is wrong");
+            throw new PersonNotFoundException("No person with provided id found");
+        } finally {
+            em.close();
         }
     }
 
     @Override
-    public Person deletePerson(int id) {
+    public List<Person> getAllPersons() throws PersonNotFoundException {
+        EntityManager em = getEntityManager();
+        try {
+            List<Person> result = em.createNamedQuery("Person.getAllPersons").getResultList();
+            if (result != null) {
+                return result;
+            }
+            throw new PersonNotFoundException("Problem finding all persons");
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public Person addPerson(String fName, String lName, String phone) throws MissingInputException {
+        if (((((fName == null || lName == null) || phone == null) || fName.isEmpty()) || lName.isEmpty()) || phone.isEmpty()) {
+            throw new MissingInputException("First Name and/or Last Name is missing");
+        }
+        EntityManager em = getEntityManager();
+        try {
+            Person target = new Person(fName, lName, phone);
+            //if (target != null) { //all input is already checked.
+            em.getTransaction().begin();
+            em.persist(target);
+            em.getTransaction().commit();
+            return target;
+            //}
+            //em.getTransaction().rollback();
+            //throw new PersonNotFoundException("Could not add user");
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public Person deletePerson(int id) throws PersonNotFoundException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            Person result = em.find(Person.class, id);
-            em.remove(result);
-            em.getTransaction().commit();
-            return result;
-        } catch (Exception ex) {
-            em.getTransaction().rollback();
-            throw new IllegalStateException("Problem deleting person: " + ex.getMessage());
+            Person result = em.find(Person.class,
+                    id);
+            if (result != null) {
+                em.remove(result);
+                em.getTransaction().commit();
+                return result;
+            }
+            throw new PersonNotFoundException("Could not delete, provided id does not exist");
         } finally {
             em.close();
         }
     }
 
     @Override
-    public Person editPerson(Person p) {
+    public Person editPerson(Person p) throws MissingInputException {
+        if (p == null
+                || p.getFirstName() == null
+                || p.getLastName() == null
+                || p.getPhone() == null
+                || p.getFirstName().isEmpty()
+                || p.getLastName().isEmpty()
+                || p.getPhone().isEmpty()) {
+            throw new MissingInputException("First Name and/or Last Name is missing");
+        }
+
         EntityManager em = getEntityManager();
         try {
+            //if (p != null) { //all input is already checked.
             em.getTransaction().begin();
             p.setLastEdited(new Date());
             em.merge(p);
             em.getTransaction().commit();
             return p;
-        } catch (Exception ex) {
-            em.getTransaction().rollback();
-            throw new IllegalStateException("Problem editing person: " + ex.getMessage());
+            //}
+            //em.getTransaction().rollback();
+            //throw new PersonNotFoundException("Problem editing person");
         } finally {
             em.close();
         }
