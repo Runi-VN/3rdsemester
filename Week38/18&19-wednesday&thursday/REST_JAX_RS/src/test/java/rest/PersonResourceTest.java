@@ -180,6 +180,28 @@ public class PersonResourceTest {
         MatcherAssert.assertThat((result), equalTo(expResult));
     }
 
+    @Test
+    public void testGetAllPersonsException() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            //reset DB tables, AutoIncrement-counter
+            em.getTransaction().begin();
+            Query query = em.createNativeQuery("truncate table Week5Day3_test.PERSON;");
+            query.executeUpdate();
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+        given()
+                .get("/person/all").then()
+                .assertThat()
+                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode()).
+                body("code", equalTo(404)).
+                body("message", equalTo("Problem finding all persons"));
+
+    }
+
     /**
      * Test of addPerson method, of class PersonResource.
      *
@@ -209,6 +231,23 @@ public class PersonResourceTest {
         //Assert
         MatcherAssert.assertThat((result), equalTo(expResult));
     }
+    
+    @Test
+    public void testAddPersonException() {
+         //Arrange
+        PersonDTO expResult = new PersonDTO("", null, "");
+        
+        //Act
+        given() 
+                .contentType("application/json")
+                .body(expResult)
+                .post("/person/add").then()
+                .assertThat()
+                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode()).
+                body("code", equalTo(404)).
+                body("message", equalTo("First Name and/or Last Name is missing"));
+
+    }
 
     /**
      * Test of editPerson method, of class PersonResource.
@@ -235,6 +274,26 @@ public class PersonResourceTest {
 
         //Assert
         MatcherAssert.assertThat((result), equalTo(new PersonDTO(expResult))); //convert to personDTO
+    }
+    
+    @Test
+    public void testEditPersonException() {
+         //Arrange
+        Person expResult = new Person();
+        //expResult.setFirstName(null);
+        //expResult.setLastName("");
+        //expResult.setPhone("");
+        
+        //Act
+        given() 
+                .contentType("application/json")
+                .body(expResult)
+                .put("/person/edit").then()
+                .assertThat()
+                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode()).
+                body("code", equalTo(404)).
+                body("message", equalTo("First Name and/or Last Name is missing"));
+
     }
 
     /**

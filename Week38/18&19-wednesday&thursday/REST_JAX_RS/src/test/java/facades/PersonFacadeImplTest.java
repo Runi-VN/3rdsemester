@@ -106,6 +106,20 @@ public class PersonFacadeImplTest {
         Assertions.assertNotNull(result);
         assertEquals(expResult, result);
     }
+    
+    @org.junit.jupiter.api.Test
+    public void testAddPersonException() {
+        //Arrange
+        String fName = "";
+        String lName = "";
+        String phone = null;
+
+        //Act
+        //Assert
+        Assertions.assertThrows(MissingInputException.class, () -> {
+            facade.addPerson(fName, lName, phone);
+        });
+    }
 
     /**
      * Test of deletePerson method, of class PersonFacadeImpl.
@@ -190,6 +204,27 @@ public class PersonFacadeImplTest {
         assertEquals(expResult, result);
     }
 
+    @org.junit.jupiter.api.Test
+    public void testGetAllPersonsException() {
+        //Arrange
+        EntityManager em = emf.createEntityManager();
+        try {
+            //reset DB tables, AutoIncrement-counter
+            em.getTransaction().begin();
+            Query query = em.createNativeQuery("truncate table Week5Day3_test.PERSON;");
+            query.executeUpdate();
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+
+        //Act
+        //Assert
+        Assertions.assertThrows(PersonNotFoundException.class, () -> {
+            facade.getAllPersons();
+        });
+    }
+
     /**
      * Test of editPerson method, of class PersonFacadeImpl.
      *
@@ -209,6 +244,18 @@ public class PersonFacadeImplTest {
         //Assert
         Assertions.assertNotNull(result);
         assertEquals(expResult, result);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testEditPersonException() {
+        //Arrange
+        Person expResult = null;
+
+        //Act
+        //Assert
+        Assertions.assertThrows(MissingInputException.class, () -> {
+            facade.editPerson(expResult);
+        });
     }
 
 }

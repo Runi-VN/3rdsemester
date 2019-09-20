@@ -62,7 +62,7 @@ public class PersonFacadeImpl implements PersonFacade {
         EntityManager em = getEntityManager();
         try {
             List<Person> result = em.createNamedQuery("Person.getAllPersons").getResultList();
-            if (result != null) {
+            if (result != null && !result.isEmpty()) {
                 return result;
             }
             throw new PersonNotFoundException("Problem finding all persons");
