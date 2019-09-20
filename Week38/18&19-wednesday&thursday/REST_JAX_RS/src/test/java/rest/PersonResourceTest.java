@@ -2,6 +2,7 @@ package rest;
 
 import dto.PersonDTO;
 import dto.PersonsDTO;
+import entities.Address;
 import entities.Person;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
@@ -34,7 +35,7 @@ import utils.EMF_Creator.DbSelector;
 import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
-//@Disabled
+@Disabled
 public class PersonResourceTest {
 
     private static final int SERVER_PORT = 7777;
@@ -42,6 +43,10 @@ public class PersonResourceTest {
     //Read this line from a settings-file  since used several places
     //private static final String TEST_DB = "jdbc:mysql://localhost:3307/startcode_test";
     private static List<Person> persons;
+    Address a1;
+    Address a2;
+    Address a3;
+    Address a4;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -80,11 +85,14 @@ public class PersonResourceTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         persons = new ArrayList(); //init
-
-        persons.add(new Person("Runi", "Vedel", "112"));
-        persons.add(new Person("Knud", "Knudsen", "12345678"));
-        persons.add(new Person("Per", "Pedersen", "55128922"));
-        persons.add(new Person("Johnny", "Larsen", "10302040"));
+        a1 = new Address("Mindevej 12", "2300", "København S");
+        a2 = new Address("Vej 28A", "2200", "Nørrebro?");
+        a3 = new Address("Et sted 5", "1200", "Yikes");
+        a4 = new Address("Langt væk 22", "8900", "Jepby");
+        persons.add(new Person("Runi", "Vedel", "112", a1));
+        persons.add(new Person("Knud", "Knudsen", "12345678", a2));
+        persons.add(new Person("Per", "Pedersen", "55128922", a3));
+        persons.add(new Person("Johnny", "Larsen", "10302040", a4));
 
         try {
             //reset DB tables, AutoIncrement-counter
@@ -209,7 +217,7 @@ public class PersonResourceTest {
     @Test
     public void testAddPerson() {
         //Arrange
-        PersonDTO expResult = new PersonDTO("John", "Test", "12344321");
+        PersonDTO expResult = new PersonDTO("John", "Test", "12344321", a1);
 
         //Act
         PersonDTO result
@@ -231,14 +239,14 @@ public class PersonResourceTest {
         //Assert
         MatcherAssert.assertThat((result), equalTo(expResult));
     }
-    
+
     @Test
     public void testAddPersonException() {
-         //Arrange
-        PersonDTO expResult = new PersonDTO("", null, "");
-        
+        //Arrange
+        PersonDTO expResult = new PersonDTO("", null, "", null);
+
         //Act
-        given() 
+        given()
                 .contentType("application/json")
                 .body(expResult)
                 .post("/person/add").then()
@@ -275,17 +283,17 @@ public class PersonResourceTest {
         //Assert
         MatcherAssert.assertThat((result), equalTo(new PersonDTO(expResult))); //convert to personDTO
     }
-    
+
     @Test
     public void testEditPersonException() {
-         //Arrange
+        //Arrange
         Person expResult = new Person();
         //expResult.setFirstName(null);
         //expResult.setLastName("");
         //expResult.setPhone("");
-        
+
         //Act
-        given() 
+        given()
                 .contentType("application/json")
                 .body(expResult)
                 .put("/person/edit").then()

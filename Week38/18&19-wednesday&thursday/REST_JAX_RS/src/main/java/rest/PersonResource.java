@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import dto.PersonDTO;
 import dto.PersonDTO_create;
 import dto.PersonsDTO;
+import entities.Address;
 import entities.Person;
 import exceptions.ExceptionDTO;
 import exceptions.MissingInputException;
@@ -43,10 +44,15 @@ public class PersonResource {
     @Path("/populate")
     @Produces({MediaType.APPLICATION_JSON})
     public String populate() throws MissingInputException, PersonNotFoundException {
-        facade.addPerson("Runi", "Vedel", "112");
-        facade.addPerson("Knud", "Knudsen", "12345678");
-        facade.addPerson("Per", "Pedersen", "55128922");
-        facade.addPerson("Johnny", "Larsen", "10302040");
+        Address a1 = new Address("Mindevej 12", "2300", "København S");
+        Address a2 = new Address("Vej 28A", "2200", "Nørrebro?");
+        Address a3 = new Address("Et sted 5", "1200", "Yikes");
+        Address a4 = new Address("Langt væk 22", "8900", "Jepby");
+        
+        facade.addPerson("Runi", "Vedel", "112", a1);
+        facade.addPerson("Knud", "Knudsen", "12345678", a2);
+        facade.addPerson("Per", "Pedersen", "55128922", a3);
+        facade.addPerson("Johnny", "Larsen", "10302040", a4);
 
         JsonObject dbMsg = new JsonObject();
         dbMsg.addProperty("msg", "Populated DB");
@@ -87,7 +93,7 @@ public class PersonResource {
     @Consumes({MediaType.APPLICATION_JSON})
     public Response addPerson(String person_JSON) throws MissingInputException, PersonNotFoundException {
         PersonDTO person = GSON.fromJson(person_JSON, PersonDTO.class);
-        Person result = facade.addPerson(person.getfName(), person.getlName(), person.getPhone());
+        Person result = facade.addPerson(person.getfName(), person.getlName(), person.getPhone(), person.getAddress());
         PersonDTO_create response = new PersonDTO_create(result); //ensure we live up to the assignment of DTO-display only
         return Response.ok(response).build();
     }

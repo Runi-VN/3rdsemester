@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 @Entity
@@ -32,6 +33,9 @@ public class Person implements Serializable {
     private Date created;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastEdited;
+    
+    @OneToOne
+    private Address address;
 
     public Person() {
     }
@@ -46,12 +50,13 @@ public class Person implements Serializable {
      * @param created
      * @param lastEdited
      */
-    public Person(String firstName, String lastName, String phone, Date created, Date lastEdited) {
+    public Person(String firstName, String lastName, String phone, Date created, Date lastEdited, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.created = created;
         this.lastEdited = lastEdited;
+        this.address = address;
     }
 
     /**
@@ -61,14 +66,23 @@ public class Person implements Serializable {
      * @param lastName
      * @param phone
      */
-    public Person(String firstName, String lastName, String phone) {
+    public Person(String firstName, String lastName, String phone, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.created = new Date();
         this.lastEdited = new Date();
+        this.address = address;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
     /**
      * Get the value of phone
      *

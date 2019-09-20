@@ -1,5 +1,6 @@
 package facades;
 
+import entities.Address;
 import java.util.List;
 import entities.Person;
 import exceptions.MissingInputException;
@@ -11,7 +12,7 @@ import exceptions.PersonNotFoundException;
  */
 public interface PersonFacade {
 
-    public Person addPerson(String fName, String lName, String phone) throws MissingInputException;
+    public Person addPerson(String fName, String lName, String phone, Address address) throws MissingInputException;
 
     public Person deletePerson(int id) throws PersonNotFoundException;
 

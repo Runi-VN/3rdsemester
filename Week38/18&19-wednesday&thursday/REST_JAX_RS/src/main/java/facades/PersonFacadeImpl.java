@@ -1,5 +1,6 @@
 package facades;
 
+import entities.Address;
 import entities.Person;
 import exceptions.MissingInputException;
 import exceptions.PersonNotFoundException;
@@ -72,13 +73,14 @@ public class PersonFacadeImpl implements PersonFacade {
     }
 
     @Override
-    public Person addPerson(String fName, String lName, String phone) throws MissingInputException {
-        if (((((fName == null || lName == null) || phone == null) || fName.isEmpty()) || lName.isEmpty()) || phone.isEmpty()) {
+    public Person addPerson(String fName, String lName, String phone, Address address) throws MissingInputException {
+        if (((((fName == null || lName == null) || phone == null)
+                || fName.isEmpty()) || lName.isEmpty()) || phone.isEmpty() || address == null) {
             throw new MissingInputException("First Name and/or Last Name is missing");
         }
         EntityManager em = getEntityManager();
         try {
-            Person target = new Person(fName, lName, phone);
+            Person target = new Person(fName, lName, phone, address);
             //if (target != null) { //all input is already checked.
             em.getTransaction().begin();
             em.persist(target);

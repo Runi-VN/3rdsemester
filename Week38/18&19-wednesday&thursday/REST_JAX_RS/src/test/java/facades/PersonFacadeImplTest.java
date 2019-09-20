@@ -1,5 +1,6 @@
 package facades;
 
+import entities.Address;
 import utils.EMF_Creator;
 import entities.Person;
 import exceptions.MissingInputException;
@@ -19,7 +20,7 @@ import utils.EMF_Creator.DbSelector;
 import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
-//@Disabled
+@Disabled
 public class PersonFacadeImplTest {
 
     private static EntityManagerFactory emf;
@@ -52,11 +53,16 @@ public class PersonFacadeImplTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         persons = new ArrayList(); //init
+        
+        Address a1 = new Address("Mindevej 12", "2300", "København S");
+        Address a2 = new Address("Vej 28A", "2200", "Nørrebro?");
+        Address a3 = new Address("Et sted 5", "1200", "Yikes");
+        Address a4 = new Address("Langt væk 22", "8900", "Jepby");
 
-        persons.add(new Person("Runi", "Vedel", "112"));
-        persons.add(new Person("Knud", "Knudsen", "12345678"));
-        persons.add(new Person("Per", "Pedersen", "55128922"));
-        persons.add(new Person("Johnny", "Larsen", "10302040"));
+        persons.add(new Person("Runi", "Vedel", "112", a1));
+        persons.add(new Person("Knud", "Knudsen", "12345678", a2));
+        persons.add(new Person("Per", "Pedersen", "55128922", a3));
+        persons.add(new Person("Johnny", "Larsen", "10302040", a4));
 
         try {
             //reset DB tables, AutoIncrement-counter
@@ -95,11 +101,12 @@ public class PersonFacadeImplTest {
         String fName = "Test";
         String lName = "Testerson";
         String phone = "1-800-test";
-        Person expResult = new Person(fName, lName, phone);
+        Address address = new Address("Upper test St. 12", "500", "London");
+        Person expResult = new Person(fName, lName, phone, address);
         Person result;
 
         //Act
-        result = facade.addPerson(fName, lName, phone);
+        result = facade.addPerson(fName, lName, phone, address);
         expResult.setId(result.getId()); //has no ID until now. haxx.
 
         //Assert
@@ -113,11 +120,12 @@ public class PersonFacadeImplTest {
         String fName = "";
         String lName = "";
         String phone = null;
+        Address address = null;
 
         //Act
         //Assert
         Assertions.assertThrows(MissingInputException.class, () -> {
-            facade.addPerson(fName, lName, phone);
+            facade.addPerson(fName, lName, phone, address);
         });
     }
 
