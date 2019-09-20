@@ -20,7 +20,6 @@ import utils.EMF_Creator.DbSelector;
 import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
-@Disabled
 public class PersonFacadeImplTest {
 
     private static EntityManagerFactory emf;
@@ -53,7 +52,7 @@ public class PersonFacadeImplTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         persons = new ArrayList(); //init
-        
+
         Address a1 = new Address("Mindevej 12", "2300", "København S");
         Address a2 = new Address("Vej 28A", "2200", "Nørrebro?");
         Address a3 = new Address("Et sted 5", "1200", "Yikes");
@@ -67,8 +66,14 @@ public class PersonFacadeImplTest {
         try {
             //reset DB tables, AutoIncrement-counter
             em.getTransaction().begin();
-            Query query = em.createNativeQuery("truncate table Week5Day3_test.PERSON;");
-            query.executeUpdate();
+            //Query query = em.createNativeQuery("SET FOREIGN_KEY_CHECKS = 0; \n"
+                    //+ "TRUNCATE table Week5Day3_test.PERSON; \n"
+                    //+ "SET FOREIGN_KEY_CHECKS = 1;");
+            //query.executeUpdate();
+            em.createNamedQuery("Person.deleteAllRows");
+            em.createNamedQuery("Address.deleteAllRows");
+            //Query query = em.createNativeQuery("truncate table Week5Day3_test.PERSON;");
+            //query.executeUpdate();
             em.getTransaction().commit();
             //add collection to DB
             persons.forEach(p -> {
@@ -113,7 +118,7 @@ public class PersonFacadeImplTest {
         Assertions.assertNotNull(result);
         assertEquals(expResult, result);
     }
-    
+
     @org.junit.jupiter.api.Test
     public void testAddPersonException() {
         //Arrange

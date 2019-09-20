@@ -3,19 +3,23 @@ package entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.annotations.PrivateOwned;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Person.deleteAllRows", query = "DELETE from Person"),
+    @NamedQuery(name = "Person.deleteAllRows", query = "DELETE from Person p where p.id > 0"),
     @NamedQuery(name = "Person.getAllPersons", query = "SELECT p FROM Person p")})
 
 public class Person implements Serializable {
@@ -34,7 +38,10 @@ public class Person implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastEdited;
     
-    @OneToOne
+    //@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @JoinColumn(name = "address_id")
+    @PrivateOwned
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 
     public Person() {

@@ -2,10 +2,12 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -13,6 +15,7 @@ import javax.persistence.OneToOne;
  * @author runi1
  */
 @Entity
+@NamedQuery(name = "Address.deleteAllRows", query = "DELETE from Address a where a.id > 0")
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,7 +24,7 @@ public class Address implements Serializable {
     private Integer id;
     private String street, zip, city;
     
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
     private Person person;
 
     public Address() {
@@ -32,6 +35,23 @@ public class Address implements Serializable {
         this.zip = zip;
         this.city = city;
     }
+
+    public Address(String street, String zip, String city, Person person) {
+        this.street = street;
+        this.zip = zip;
+        this.city = city;
+        this.person = person;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+    
+    
 
     /**
      * Get the value of city
