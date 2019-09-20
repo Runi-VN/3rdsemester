@@ -57,3 +57,8 @@ deletePerson()
 ![](https://i.imgur.com/Y8nwlFU.png)  
 **AFTER**  
 ![](https://i.imgur.com/TVLqlNK.png)  
+
+## Entity Classes with relations  
+- Task 1: Finished  
+- Task 2: 90% finished (can't delete tables properly)  
+- Task 3: Not begun  
