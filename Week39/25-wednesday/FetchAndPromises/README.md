@@ -46,7 +46,7 @@ document.getElementById("btnAddJoke").addEventListener("click", function(){
 
 So, in short, fetch by default adds our request for a cross-origin resource. Then our browser adds a `Origin`-header **[1 in image]**, and as can be seen from the response, the server has a *wildcard value* (\*) set for the `Access-Control-Allow-Origin` **[2 in image]** allowing us access as if we were origin.
 
-###### *7) Change the functionality to get a new quote every hour. (Hint: use setInterval() )*
+##### *7) Change the functionality to get a new quote every hour. (Hint: use setInterval() )*
 
 ![](https://i.imgur.com/Yh0tTWk.gif)  
 For testing I update once every 2000ms (2 seconds)  
