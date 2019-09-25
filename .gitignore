@@ -42,7 +42,6 @@
 # Custom
 /Template - REST_JPA/
 /Template - REST_JPA_DEVOPS/
-/Template - code_simple_SPA/
 /backup/
 
 # End of https://www.gitignore.io/api/windows,netbeans
