@@ -52,3 +52,16 @@ So, in short, fetch by default adds our request for a cross-origin resource. The
 For testing I update once every 2000ms (2 seconds)  
 Notice that I use `https://studypoints.info/jokes/api/jokes/random` instead of the former `/jokes/period/hour`.  
 The idea is to run the method once at invocation, and then again once every hour.  
+
+## Ajax with a full REST CRUD Endpoint and Error-handling
+
+
+### Test the POST method
+![](https://i.imgur.com/urjbPOP.png)  
+
+### Test the PUT method
+![](https://i.imgur.com/pI28NRz.png)  
+
+### Test the DELETE method
+![](https://i.imgur.com/LR4wOdh.png)  
+
