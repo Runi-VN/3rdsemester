@@ -51,3 +51,4 @@ So, in short, fetch by default adds our request for a cross-origin resource. The
 ![](https://i.imgur.com/Yh0tTWk.gif)  
 For testing I update once every 2000ms (2 seconds)  
 Notice that I use `https://studypoints.info/jokes/api/jokes/random` instead of the former `/jokes/period/hour`.  
+The idea is to run the method once at invocation, and then again once every hour.  
