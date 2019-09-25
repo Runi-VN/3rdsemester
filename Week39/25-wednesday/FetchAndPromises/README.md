@@ -36,7 +36,7 @@ document.getElementById("btnAddJoke").addEventListener("click", function(){
 ```
 
 ### Small application to display a quote of the hour  
-6) Use developer-tools in your browser and it’s network options to monitor the AJAX-request. Explain why, what you did above, is even possible, when we know the Same Origin Policy governs when/where AJAX-request can go
+##### *6) Use developer-tools in your browser and it’s network options to monitor the AJAX-request. Explain why, what you did above, is even possible, when we know the Same Origin Policy governs when/where AJAX-request can go*  
 ![](https://i.imgur.com/2AzsRR3.png)  
 
 
@@ -46,3 +46,8 @@ document.getElementById("btnAddJoke").addEventListener("click", function(){
 
 So, in short, fetch by default adds our request for a cross-origin resource. Then our browser adds a `Origin`-header **[1 in image]**, and as can be seen from the response, the server has a *wildcard value* (\*) set for the `Access-Control-Allow-Origin` **[2 in image]** allowing us access as if we were origin.
 
+###### *7) Change the functionality to get a new quote every hour. (Hint: use setInterval() )*
+
+https://i.imgur.com/Yh0tTWk.gif  
+For testing I update once every 2000ms (2 seconds)  
+Notice that I use `https://studypoints.info/jokes/api/jokes/random` instead of the former `/jokes/period/hour`.  
