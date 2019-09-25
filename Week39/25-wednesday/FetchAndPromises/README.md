@@ -48,6 +48,6 @@ So, in short, fetch by default adds our request for a cross-origin resource. The
 
 ###### *7) Change the functionality to get a new quote every hour. (Hint: use setInterval() )*
 
-https://i.imgur.com/Yh0tTWk.gif  
+![](https://i.imgur.com/Yh0tTWk.gif)  
 For testing I update once every 2000ms (2 seconds)  
 Notice that I use `https://studypoints.info/jokes/api/jokes/random` instead of the former `/jokes/period/hour`.  
