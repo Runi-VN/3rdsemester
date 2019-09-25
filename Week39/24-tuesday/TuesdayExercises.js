@@ -155,7 +155,7 @@ console.log("d) Create a single html-file and test the two examples given above.
 // // console.log("e) Add a button with a click-handler and use the filter method to find only names containing the letter ");
 // // document.getElementById("btn").addEventListener("click", function (e) {
 // //     document.getElementById("myTable").innerHTML = generateNameString(nameCheck);
-// // }); //not going to do this the hardway lol
+// // }); //not going to do this the hard way lol
 
 //5. reduce
 console.log("a) Use join to create a single string from all, with names: comma-, space. and  # - separated.");
@@ -201,3 +201,51 @@ let voteReduce = votes.reduce((total, vote) => {
 //a["clinton"] = 1;
 console.log(voteReduce);
 
+//8 Reusable Modules with Closures 
+
+
+console.log("1) Implement and test the Closure Counter Example from w3schools: (OUTCOMMENTED)");
+// var add = (function () {
+//     var counter = 0;
+//     return function (number) { counter += number; return counter; }
+// })();
+
+// document.getElementById("buttonCount").addEventListener("click", function () {
+//     document.getElementById("demo").innerHTML = add(5);
+// });
+
+console.log("2) Implement a reusable function using the Module pattern that should encapsulate information about a person (name, and age) and returns an object with the following methods:");
+
+console.log("This task has been done before...");
+var personModule = (function () {
+    //private
+    var age;
+    var name;
+    function getInfo() {
+        return name + ", " + age;
+    }
+    function setAge(age1) {
+        age = age1;
+        return age;
+    }
+    function setName(name2) {
+        name = name2;
+        return name;
+    }
+    return {
+        //public
+        setAge: setAge,
+        setName: setName,
+        getInfo: getInfo
+    }
+    /*
+    Above is the module revealer pattern. 
+    The methods could also be in the public part, to be a regular module pattern
+    */
+
+
+})();
+let testPerson = personModule;
+testPerson.setAge(45);
+testPerson.setName("Peter");
+console.log(testPerson.getInfo());
