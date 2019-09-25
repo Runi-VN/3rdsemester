@@ -44,5 +44,5 @@ document.getElementById("btnAddJoke").addEventListener("click", function(){
 
 [Source](https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api)  
 
-So, in short, fetch by default adds our `Origin`-header **[1 in image]**, and as can be seen from the response, the server has a *wildcard value* (\*) set for the `Access-Control-Allow-Origin` **[2 in image]** allowing us access as if we were origin.
+So, in short, fetch by default adds our request for a cross-origin resource. Then our browser adds a `Origin`-header **[1 in image]**, and as can be seen from the response, the server has a *wildcard value* (\*) set for the `Access-Control-Allow-Origin` **[2 in image]** allowing us access as if we were origin.
 
