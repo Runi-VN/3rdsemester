@@ -1,6 +1,6 @@
 # Wednesday exercises 
 
-### Finding individual jokes/Adding new jokes
+## Finding individual jokes/Adding new jokes
 ![](https://i.imgur.com/qAwSZtu.png)  
 
 ##### HTML code:
@@ -35,7 +35,7 @@ document.getElementById("btnAddJoke").addEventListener("click", function(){
 });
 ```
 
-### Small application to display a quote of the hour  
+## Small application to display a quote of the hour  
 ##### *6) Use developer-tools in your browser and it’s network options to monitor the AJAX-request. Explain why, what you did above, is even possible, when we know the Same Origin Policy governs when/where AJAX-request can go*  
 ![](https://i.imgur.com/2AzsRR3.png)  
 
