@@ -40,7 +40,7 @@ document.getElementById("btnAddJoke").addEventListener("click", function(){
 ![](https://i.imgur.com/2AzsRR3.png)  
 
 
->The CORS mechanism lets you specify in a request that you want to retrieve a cross-origin resource (in fetch this is enabled by >default). The browser adds an `Origin` header to the request, and then requests the appropriate resource. The browser only returns >the response if the server returns an `Access-Control-Allow-Origin` header specifying that the origin has permission to request the >resource. *In practice, servers that expect a variety of parties to request their resources (such as 3rd party APIs) set a >**wildcard value** for the `Access-Control-Allow-Origin` header, allowing anyone to access that resource.*  
+>The CORS mechanism lets you specify in a request that you want to retrieve a cross-origin resource (in fetch this is enabled by default). The browser adds an `Origin` header to the request, and then requests the appropriate resource. The browser only returns the response if the server returns an `Access-Control-Allow-Origin` header specifying that the origin has permission to request the resource. *In practice, servers that expect a variety of parties to request their resources (such as 3rd party APIs) set a **wildcard value** for the `Access-Control-Allow-Origin` header, allowing anyone to access that resource.*  
 
 [Source](https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api)  
 
