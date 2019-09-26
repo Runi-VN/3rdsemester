@@ -57,6 +57,6 @@ The error message & response headers are actually a bit vague (probably due to t
 ## 2) CORS with Java and Jax-rs for a “real” project  
 Skipped. This is essentially the same assignment as above and the same is included in the friday assignment.
 
-3) Deploy a SPA on separate Servers  
+## 3) Deploy a SPA on separate Servers  
 http://runivn.surge.sh/
 
