@@ -1,7 +1,7 @@
-#Exercise notes
+# Exercise notes
 
-How my solution looks:
-![](https://i.imgur.com/jZQcB3t.png]
+How my solution looks:  
+![](https://i.imgur.com/jZQcB3t.png)
 
 
 ### Document the API
