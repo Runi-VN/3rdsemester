@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div id="textContainer" style="flex-wrap: wrap;">
+      <h3>Looks familiar? <br>This is a copy of my wednesday assignment</h3>
+    </div>
+    <br>
+
+    <!-- // Show a single user, given an ID
+        // Add a new User
+        // Edit an existing user
+        // Delete an existing user -->
+    <div class="buttonContainer">
+      <label>Get Person By ID</label><br>
+      <input id="userID" type="number" placeholder="Person ID"></input><br>
+      <button id="btnSingleUser" type="button" class="btn btn-sm btn-info">Get Person</button>
+
+    </div>
+    <div class="buttonContainer">
+      <label>Add/Edit Person</label><br>
+      <input id="input-name" type="text" placeholder="Name">
+      <br>
+      <input id="input-email" type="text" placeholder="Occupation">
+      <br>
+      <label for="input-id">>>> Editing Person?</label><br>
+      <input id="input-id" placeholder="Person ID" type="number"><br>
+      <button id="btnAddUser" type="button" class="btn btn-sm btn-success">Add Person</button>
+      <button id="btnEditUser" type="button" class="btn btn-sm btn-info">Edit Person</button>
+    </div>
+    <div class="buttonContainer">
+      <label for="btnDeleteUser">Delete Person</label><br>
+      <input id="deleteUserId" type="number" placeholder="Person ID"></input><br>
+      <button id="btnDeleteUser" type="button" class="btn btn-sm btn-danger">DELETE</button>
+    </div>
+
+
+
+    <button id="btnClear" type="button" class="btn btn-sm btn-warning">Clear table</button>
+    <div id="output"></div>
+
+
+
+  </div>
+
+  <script src="bundle.js"></script>
+</body>
+
+</html>
