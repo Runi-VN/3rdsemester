@@ -8,17 +8,18 @@
 
 <body>
   <div class="container">
-    <em>
-        This is meant as a quick intro to how we will create front-end code for the rest of the semester.<br/>
-        The ONLY HTML-file you should consider is index.htm (in the public folder) and ALL your javascript code should go into the source folder.<br/>
-        Use this small example as a template for this week. Next time we will focus on JavaScript, it will be with React, i a way "similar" this<br/>
-        Make sure all your JavaScript code is included in index.js, the "by magic" it will be included in the bundle.js file which is included by the index.html
-    </em>
-    <br/>
-    <br/>
-    <h2>Jokes</h2>
-    <p id="jokes"> </p>
+    <div id="textContainer" style="flex-wrap: wrap;">
+      <h3>What would you like to do?<br><a
+          href="https://github.com/Runi-VN/3rdsemester/tree/master/Week39/25-wednesday/SPA" target="_blank">Project
+          repository</a></h3>
+    </div>
+    <br>
+    <div id="buttonContainer">
+      <button id="btnAllUsers" type="button">Get all Users</button>
+    </div>
+    <div id="output"></div>
   </div>
+
   <script src="bundle.js"></script>
 </body>
 
