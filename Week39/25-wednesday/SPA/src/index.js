@@ -2,42 +2,41 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 
 let output = document.getElementById("output");
-let url = 'http://localhost:3333/api/';
-
-function fetchWithErrorCheck(res) {
-    if (!res.ok) {
-        return Promise.reject({ status: res.status, fullError: res.json() })
-    }
-    return res.json();
-}
-
-// fetch('https://swapi.co/api/people/999999999999')
-// .then(res => fetchWithErrorCheck(res))
-// .then(data => console.log(data.name))
-// .catch(err => {
-//     if (err.status) {
-//     err.fullError.then(e => {
-//         output.innerHTML = "Error:<br><br>" + generateTable(e);
-//         console.log(e.detail)
-//     })
-// }
-//     else { console.log("Network error"); }
-// });
-
+let url = 'http://localhost:3333/api/users/';
 
 // Show all users (in a table)
 document.getElementById("btnAllUsers").addEventListener("click",
     function getAllUsers() {
-        fetch(url + 'users')
+        fetch(url)
             .then(res => fetchWithErrorCheck(res))
             .then(data => {
-                console.log('getAllUsers: ' + data);
                 output.innerHTML = data.map((e, i, a) => generateTable(e, i, a)).join("");
             })
             .catch(err => {
                 if (err.status) {
                     err.fullError.then(e => {
-                        output.innerHTML = "Error:<br><br>" + generateTable(e);
+                        output.innerHTML = "<p>Error:</p><br><br>" + generateTable(e);
+                        console.log(e.detail)
+                    })
+                }
+                else { console.log(err); }
+            });
+
+    });
+
+// Show a single user, given an ID
+document.getElementById("btnSingleUser").addEventListener("click",
+    function getSingleUser() {
+        let id = document.getElementById("userID").value;
+        fetch(url + id)
+            .then(res => fetchWithErrorCheck(res))
+            .then(data => {
+                output.innerHTML = generateTable(data);
+            })
+            .catch(err => {
+                if (err.status) {
+                    err.fullError.then(e => {
+                        output.innerHTML = "<p>Error:</p><br><br>" + generateTable(e);
                         console.log(e.detail)
                     })
                 }
@@ -45,10 +44,91 @@ document.getElementById("btnAllUsers").addEventListener("click",
             });
     });
 
-// Show a single user, given an ID
 // Add a new User
+document.getElementById("btnAddUser").addEventListener("click",
+    function addUser() {
+        let options = makeOptions("POST");
+        fetch(url, options)
+            .then(res => fetchWithErrorCheck(res))
+            .then(data => {
+                output.innerHTML = "<p>Success:</p>" + generateTable(data);
+            })
+            .catch(err => {
+                if (err.status) {
+                    err.fullError.then(e => {
+                        output.innerHTML = "<p>Error:</p>" + generateTable(e);
+                        console.log(e.detail)
+                    })
+                }
+                else { console.log(err); }
+            });
+    });
+
 // Edit an existing user
+document.getElementById("btnEditUser").addEventListener("click",
+    function editUser() {
+        let id = document.getElementById("input-id").value;
+        let options = makeOptions("PUT");
+        fetch(url + id, options)
+            .then(res => fetchWithErrorCheck(res))
+            .then(data => {
+                output.innerHTML = "<p>Success:</p>"; //no data
+            })
+            .catch(err => {
+                if (err.status) {
+                    err.fullError.then(e => {
+                        output.innerHTML = "<p>Error:</p>" + generateTable(e);
+                        console.log(e.detail)
+                    })
+                }
+                else { console.log(err); }
+            });
+    });
+
+
 // Delete an existing user
+document.getElementById("btnDeleteUser").addEventListener("click",
+    function deleteUser() {
+        let id = document.getElementById("deleteUserId").value;
+        let options = makeOptions("DELETE");
+        fetch(url + id, options)
+            .then(res => fetchWithErrorCheck(res))
+            .then(data => {
+                output.innerHTML = "<p>Success:</p>" + generateTable(data);
+            })
+            .catch(err => {
+                if (err.status) {
+                    err.fullError.then(e => {
+                        output.innerHTML = "<p>Error:</p>" + generateTable(e);
+                        console.log(e.detail)
+                    })
+                }
+                else { console.log(err); }
+            });
+    });
+
+
+//outside assignment scope
+// function clearTable() {
+//     if (output.childNodes.length != 0) {
+//         document.getElementById("btnClear").style.display = "";
+//     }
+//     else {
+//         document.getElementById("btnClear").style.display = "none";
+//     }
+// };
+
+//clear table data (no function...)
+document.getElementById("btnClear").addEventListener("click", function clearTable() {
+    output.innerHTML = "";
+});
+
+function fetchWithErrorCheck(res) {
+    if (!res.ok) {
+        return Promise.reject({ status: res.status, fullError: res.json() })
+    }
+    return res.json();
+}
 
 /**
  * JSON and Javascript uses key:value pairs {key:value} 
@@ -75,7 +155,6 @@ document.getElementById("btnAllUsers").addEventListener("click",
  * 
  * It is important to notice the order of the guard statements.
  * 
- * 
  * This table is made with thanks to github.com/HrBjarup.
  * 
  * @param {*} element 
@@ -89,10 +168,10 @@ function generateTable(element, index, array) {
     if (index === 0 || typeof index === "undefined") //Index 0 or doesn't exist (single object)
     {
         //setup table
-        resultString += '<table><thead>';
+        resultString += '<table class="table table-striped table-dark"><thead>';
         //setup table-header with keys ("fields" of a Java-object)
         for (const key in element) {
-            if (object.hasOwnProperty(key)) {
+            if (element.hasOwnProperty(key)) {
                 resultString += '<th>' + key + '</th>';
             }
 
@@ -100,18 +179,18 @@ function generateTable(element, index, array) {
         resultString += '</thead>'
     }
     //generate rows of the keys' values
-    resultString += '<tr>';
+    resultString += '<tbody><tr>';
     for (const key in element) {
-        console.log("__FOR " + index + " OF " + array);
-        console.log('KEY: ' + key);
-        console.log('ELEMENT: ' + element);
-        console.log('VALUE: ' + element[key]);
-        if (object.hasOwnProperty(key)) {
+        // console.log("__FOR " + index + " OF " + array);
+        // console.log('KEY: ' + key);
+        // console.log('ELEMENT: ' + element);
+        // console.log('VALUE: ' + element[key]);
+        if (element.hasOwnProperty(key)) {
             resultString += '<td>' + element[key] + '</td>';
 
         }
     }
-    resultString += '</tr>';
+    resultString += '</tr></tbody>';
 
     //Final pass-through
     if (typeof array === "undefined" ||
@@ -121,4 +200,45 @@ function generateTable(element, index, array) {
         resultString += '</table>';
     }
     return resultString;
+}
+
+function makeOptions(http_method) {
+    let _age = document.getElementById("input-age").value;
+    let _name = document.getElementById("input-name").value;
+    let _gender;
+    let _email = document.getElementById("input-email").value;
+    if (document.getElementById("gender-m").checked) {
+        _gender = "male"
+    } else if (document.getElementById("gender-f").checked){
+        _gender = "female";
+    }
+
+    var userInfo = {
+        id: null,
+        age: _age,
+        name: _name,
+        gender: _gender,
+        email: _email
+    }
+
+    let options = {
+        method: http_method,
+        headers: {
+            "Content-type": "application/json"
+        }
+    }
+
+    if (http_method ==="DELETE")
+    {
+        return options;
+    }
+
+    let editId = document.getElementById("input-id").value;
+    if (typeof editId === "number") {
+        userInfo.id = editId;
+    }
+    //add userInfo to options
+    options.body = JSON.stringify(userInfo);
+
+    return options;
 }

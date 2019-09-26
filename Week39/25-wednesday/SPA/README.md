@@ -1,11 +1,11 @@
-# Simple template to create SPA's with plain JavaScript using Babel, Webpack and Webpacks devserver
+#Exercise notes
 
-## Getting started
+How my solution looks:
+![](https://i.imgur.com/jZQcB3t.png]
 
-- If not alredy done, install nodejs and a sufficient JavaScript Editor (we suggest vs-code)
-- Clone this project
-- In the folder it was cloned into, type npm install
-- In the folder it was cloned into (if you have installed vs-code) type "code ." to open vs-code
-- In the folder it was cloned into type npm start, to run the project via Webpacks development server
-# repo auto created
-# repo auto created
+
+### Document the API
+Will be done for friday exercise
+
+### CORS (meant for Thursday)
+I did not have any errors, and restarting the server with the supplied command didn't change anything.

@@ -14,10 +14,49 @@
           repository</a></h3>
     </div>
     <br>
-    <div id="buttonContainer">
-      <button id="btnAllUsers" type="button">Get all Users</button>
+
+    <!-- // Show a single user, given an ID
+        // Add a new User
+        // Edit an existing user
+        // Delete an existing user -->
+    <div class="buttonContainer">
+      <label>Get User By ID</label><br>
+      <input id ="userID" type="number" placeholder="User ID"></input><br>
+      <button id="btnSingleUser" type="button" class="btn btn-sm btn-info">Get User</button>
+ 
     </div>
+    <div class="buttonContainer">
+      <label>Add/Edit user</label><br>
+        <input id="input-age" type="number" placeholder="Age">
+        <br>
+        <input id="input-name" type="text" placeholder="Name">
+        <br>
+        
+        <input id="input-email" type="email" placeholder="E-mail">
+        <br>
+        <input id="gender-m" type="radio" name="gender" value="male">Male<br>
+        <input id="gender-f" type="radio" name="gender" value="female">Female<br><br>
+        <label for="input-id">>>> Editing user?</label><br>
+        <input id="input-id" placeholder="User ID" type="number"><br>
+      <button id="btnAddUser" type="button" class="btn btn-sm btn-success">Add User</button>
+      <button id="btnEditUser" type="button" class="btn btn-sm btn-info">Edit User</button>
+    </div>
+    <div class="buttonContainer">
+      <label for="btnDeleteUser">Delete  User</label><br>
+      <input id ="deleteUserId" type="number" placeholder="User ID"></input><br>
+      <button id="btnDeleteUser" type="button" class="btn btn-sm btn-danger">DELETE</button>
+    </div>
+    <div class="buttonContainer">
+      <label for="btnAllUsers">Get All Users</label><br>
+      <button id="btnAllUsers" type="button" class="btn btn-sm btn-info">Get them</button>
+    </div>
+
+    
+    <button id="btnClear" type="button" class="btn btn-sm btn-warning">Clear table</button>
     <div id="output"></div>
+
+   
+
   </div>
 
   <script src="bundle.js"></script>
