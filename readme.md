@@ -13,3 +13,4 @@ Direct links:
 - [x] [Week 36](https://github.com/Runi-VN/3rdsemester/wiki/Week-36) 
 - [ ] [Week 37](https://github.com/Runi-VN/3rdsemester/wiki/Week-37)  
 - [x] [Week 38](https://github.com/Runi-VN/3rdsemester/wiki/Week-38)
+- [x] [Week 39](https://github.com/Runi-VN/3rdsemester/wiki/Week-39)
