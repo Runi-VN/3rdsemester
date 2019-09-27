@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div id="output"></div>
+    <p id=deleteOutput></p>
+    <button type="button" id="btnAllUsers" class="btn btn-light">Refresh Users</button><br>
+    <label>Add/Edit Person</label>
+    <div id="hint">
+      <button class="btn btn-sm btn-info">Hover for hint</button>
+    </div>
+    <div class="hintOutput">
+      <p>Edit/Add uses same input. Use the edit-"button" in the table</p>
+    </div><br>
+    <input type="text" id="input-fname" placeholder="First Name"><br>
+    <input type="text" id="input-lname" placeholder="Last Name"><br>
+    <input type="number" id="input-phone" placeholder="Phone"><br>
+    <button id="btnAddPerson" type="button" class="btn btn-primary">Add New Person</button>
+    <p id=addOutput></p>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+
+</html>
