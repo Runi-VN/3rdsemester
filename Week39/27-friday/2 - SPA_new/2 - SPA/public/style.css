@@ -10,3 +10,19 @@ body {
      margin-right: auto;
   }
   
+  #hint{
+     display: inline-block;
+  }
+
+
+  .hintOutput {
+    display: none;
+}
+    
+#hint:hover  + .hintOutput {
+    display: inline-block;
+}
+
+p {
+   font-weight: bolder;
+}
