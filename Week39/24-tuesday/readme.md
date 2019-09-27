@@ -1,4 +1,5 @@
 # Exercise Notes (Tuesday 24th)
+[Exercise link](https://docs.google.com/document/d/1vl8J-PUiFIzUt6jCE9gGpiw5XvOW1L3FeouTiWemwt8/edit)
 
 ## HTML Screenshots:
 
