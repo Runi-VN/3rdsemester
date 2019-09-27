@@ -1,5 +1,5 @@
 # Exercise Notes
-
+[Exercise link](https://docs.google.com/document/d/1fqWz2euCYbUoVDf6kzj8pnW5ktalJAzuqWCfFGdwrmI/edit)  
 ## 1) CORS with Java and Jax-rs
 
 ### The Backend  
