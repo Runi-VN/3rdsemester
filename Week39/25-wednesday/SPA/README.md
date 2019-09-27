@@ -1,5 +1,5 @@
 # Exercise notes
-
+[Exercise link](https://docs.google.com/document/d/1_PkGqF-1MVt0sFDR90ARJlUhQ8DsyC4L12NI6E-iWMc/edit)  
 How my solution looks:  
 ![](https://i.imgur.com/jZQcB3t.png)
 
