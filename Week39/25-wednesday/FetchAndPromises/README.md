@@ -1,5 +1,5 @@
 # Wednesday exercises 
-
+[Exercise link](https://docs.google.com/document/d/1_PkGqF-1MVt0sFDR90ARJlUhQ8DsyC4L12NI6E-iWMc/edit)  
 ## Finding individual jokes/Adding new jokes
 ![](https://i.imgur.com/qAwSZtu.png)  
 
