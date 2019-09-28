@@ -10,13 +10,16 @@ It is NOT fun!
 Ignore
 
 `1 - SPA_AJAX_CORS`:  
-Exercise 1, SPA to create the SVG map  
+assignment 1, SPA to create the SVG map  
 
 `2 - REST_JAX_RS_CONTINUED`:  
-Exercise 2 - Old project to be used for the Javascript exercise.  
+assignment 2 - Old project to be used for the Javascript exercise.  
 
 `2 - SPA`:  
-Exercise 2 - New SPA containing index.html and index.js for the above project. Fetches through vagrant and persists too.  
+assignment 2 - New SPA containing index.html and index.js for the above project. Fetches through vagrant and persists too.  
 
 `2 - SPA_new`:  
 Ignore. Backup of above repository. Connected, so if I delete one or the other, they both go. Idk what to do here
+
+`CountryProxy`:
+The proxy for exercise 3 in assignment 2

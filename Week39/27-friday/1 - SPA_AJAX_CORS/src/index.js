@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 
-let url = 'http://restcountries.eu/rest/v1/alpha?codes=';
+let url = 'https://runivn.dk/proxy/api/proxy/newproxy?URL=http://restcountries.eu/rest/v1/alpha?codes=';
+// let url = 'http://restcountries.eu/rest/v1/alpha?codes=';
 let svgOutput = document.getElementById("svgOutput");
 
 function fetchWithErrorCheck(res) {
