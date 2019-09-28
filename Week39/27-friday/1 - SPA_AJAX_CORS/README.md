@@ -1,6 +1,7 @@
 # Exercise notes
 [Exercise link](https://docs.google.com/document/d/1VMx1XdbnIbJ6ik98qPywGyrRiqbQuIM2u9DpJmXCnlk/edit)  
 
+## Exercise 1
 
 - **Explain about the Object Model, and why it’s (very) relevant for modern Web-development**  
 
@@ -66,9 +67,8 @@ The webserver can set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTT
 
 We also set up a proxy handler, where the idea is for the webserver to only allow one host access, but then allow this host (the proxy) to delegate requests.
 
-
+## Exercise 2  
 ```
-2) 
 For the previous task it was possible to obtain data right from restcountries.eu,
 via an AJAX call made from within your Browser (as sketched to the right). 
 *Use Chrome Developer tools to explain (with focus on the Same Origin Policy) why this is possible.* 
