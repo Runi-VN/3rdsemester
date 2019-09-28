@@ -58,8 +58,9 @@ Everything is done behind-the-scenes and if done properly we ensure that the pro
 The [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) is in Ajax used to determine if an HTTP request is from the same origin as the receiver or not. The following requirements must be met:  
    - Protocol (http/s)
    - Port (if specified) (8080)
-   - Host (runivn.dk)
-So if an request is sent from https:runivn.dk:8080/app to https:runivn.dk:8080/api/person/all - everything is good.
+   - Host (runivn.dk)  
+   
+So if an request is sent from `https:runivn.dk:8080/app` to `https:runivn.dk:8080/api/person/all` - everything is good.
 
 As discussed this week, there are ways to get around the Same Origin Policy.
 
