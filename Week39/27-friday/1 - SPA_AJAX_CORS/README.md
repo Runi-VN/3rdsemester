@@ -14,6 +14,7 @@ This week we have spent a lot of time manipulating the DOM using javascript, sta
 DOM manipulation is also useful for giving feedback to the user. Is their input correct? Was the order succesful?
 
 - **Explain (using an example of your own choice) about JavaScript events, and Event Bubbling**  
+
 I think [my code](https://github.com/Runi-VN/3rdsemester/blob/master/Week39/25-wednesday/FetchAndPromises/src/index.js#L35) for Wednesdays `FetchAndPromises`-assignment [exercise 3](https://docs.google.com/document/d/1_PkGqF-1MVt0sFDR90ARJlUhQ8DsyC4L12NI6E-iWMc/edit#heading=h.wecyiqakcy9) is a perfect fit for this:
 
 ```javascript
@@ -48,12 +49,22 @@ The idea of AJAX is to chain actions together based on *promises*. If a promise 
 
 The neat part of this is how we can do CRUD operations on a webpage seemingly effortless.  
 Everything is done behind-the-scenes and if done properly we ensure that the process is either succesful or an error message is returned.  
-[w3schools](https://www.w3schools.com/whatis/whatis_ajax.asp) has an interesting feature and article of this subject.
+[w3schools](https://www.w3schools.com/whatis/whatis_ajax.asp) has an interesting feature and article of this subject.  
+[Wikipedia](https://en.wikipedia.org/wiki/Ajax_(programming)#Fetch_example) has some examples, including ES7 async/await.
 
 - **Explain the Same Origin Policy (for AJAX), and different ways to work around it**  
 
-abe
+The [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) is in Ajax used to determine if an HTTP request is from the same origin as the receiver or not. The following requirements must be met:  
+   - Protocol (http/s)
+   - Port (if specified) (8080)
+   - Host (runivn.dk)
+So if an request is sent from https:runivn.dk:8080/app to https:runivn.dk:8080/api/person/all - everything is good.
 
+As discussed this week, there are ways to get around the Same Origin Policy.
+
+The webserver can set up [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) to handle either specific hosts or all using the wildcard character (\*).
+
+We also set up a proxy handler, where the idea is for the webserver to only allow one host access, but then allow this host (the proxy) to delegate requests.
 
 
 ```
