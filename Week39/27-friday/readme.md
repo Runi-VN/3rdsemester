@@ -2,13 +2,14 @@ Numbers are what exercise the tasks belong to.
 
 As mentioned in the wiki, I had a lot of issues with this repository.  
 
-I basically can't delete any of this, as they are connected by submodule(???) (Deleting any of the extra repositores deletes its connection too).  
+I basically can't delete any of this, as they are connected by submodule(???)  
+(Deleting any of the extra repositores deletes its connection too).  
 It is NOT fun!
 
 `1 - backup:`  
 Ignore
 
-`1 - SP5_AJAX_CORS`:  
+`1 - SPA_AJAX_CORS`:  
 Exercise 1, SPA to create the SVG map  
 
 `2 - REST_JAX_RS_CONTINUED`:  
