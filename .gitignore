@@ -46,6 +46,7 @@
 /Template - code_simple_SPA/
 /JsonServer - Modified/
 /backup/
+**/SetupTestUsers.java
 
 # Custom - node
 **/node_modules
