@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
@@ -51,13 +52,13 @@ public class User implements Serializable {
 
   //TODO Change when password is hashed
    public boolean verifyPassword(String pw){
-        return(pw.equals(userPass));
+        return(BCrypt.checkpw(pw, getUserPass()));
     }
 
   public User(String userName, String userPass) {
     this.userName = userName;
 
-    this.userPass = userPass;
+    this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt(10, new SecureRandom()));
   }
 
 
