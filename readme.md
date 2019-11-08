@@ -19,4 +19,5 @@ Direct links:
 - [ ] Week 42 (holiday)
 - [ ] Week 43 (Sys)
 - [x] [Week 44](https://github.com/Runi-VN/3rdsemester/wiki/Week-44)
-- [ ] [Week 45](https://github.com/Runi-VN/3rdsemester/wiki/Week-45)
+- [x] [Week 45](https://github.com/Runi-VN/3rdsemester/wiki/Week-45)  
+- [ ] Week 46 (CA-3)
